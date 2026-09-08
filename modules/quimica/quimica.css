@@ -1,0 +1,54 @@
+/* ========================================================
+   PLANTILLA DE MÓDULO: CSS
+   Estilos específicos para este módulo. 
+   El CSS global (modo oscuro, layout) ya se aplica automáticamente.
+   ======================================================== */
+
+.modulo-wrapper {
+    /* EDITAR AQUÍ: Define cómo quieres que se agrupe todo el módulo */
+    background-color: #ffffff; /* Puedes usar var(--sidebar-bg) para que cambie en modo oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.modulo-header {
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* EDITAR AQUÍ: Dale estilo a los controles (botones, inputs) */
+.controles {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.controles input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.controles button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.controles button:hover {
+    opacity: 0.9;
+}
+
+/* EDITAR AQUÍ: Estilos para el área donde se muestra la respuesta/gráfica */
+.resultados {
+    min-height: 150px;
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px dashed var(--border-color);
+}

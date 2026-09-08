@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Ciencias e Interactividad</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Portal Ciencias</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#/" class="nav-link" data-route="/"><i class="fas fa-home"></i> Inicio</a>
+                <a href="#/quimica" class="nav-link" data-route="/quimica"><i class="fas fa-flask"></i> Química</a>
+                <a href="#/ondas" class="nav-link" data-route="/ondas"><i class="fas fa-water"></i> Ondas</a>
+                <a href="#/cuerpo" class="nav-link" data-route="/cuerpo"><i class="fas fa-child"></i> Cuerpo Humano</a>
+                <a href="#/tabla" class="nav-link" data-route="/tabla"><i class="fas fa-table"></i> Tabla Periódica</a>
+                <a href="#/matematica" class="nav-link" data-route="/matematica"><i class="fas fa-square-root-alt"></i> Matemática</a>
+                <a href="#/memoria" class="nav-link" data-route="/memoria"><i class="fas fa-brain"></i> Memoria</a>
+                <a href="#/pitagoras" class="nav-link" data-route="/pitagoras"><i class="fas fa-ruler-triangle"></i> Pitágoras</a>
+                <a href="#/trivia" class="nav-link" data-route="/trivia"><i class="fas fa-question-circle"></i> Trivia</a>
+                <a href="#/piramide" class="nav-link" data-route="/piramide"><i class="fas fa-pyramid"></i> Pirámide</a>
+                <a href="#/gravedad" class="nav-link" data-route="/gravedad"><i class="fas fa-apple-alt"></i> Gravedad</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header for global controls like dark mode -->
+            <header class="top-header">
+                <button id="theme-toggle" class="theme-btn">
+                    <i class="fas fa-moon"></i> Modo Oscuro
+                </button>
+            </header>
+
+            <!-- Dynamic SPA Container -->
+            <div id="app" class="module-container">
+                <!-- El contenido de cada módulo se cargará aquí -->
+                <h1>Bienvenido al Portal de Ciencias</h1>
+                <p>Selecciona un módulo en el menú lateral para comenzar a aprender.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

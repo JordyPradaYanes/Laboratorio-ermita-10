@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   Design System Global - Portal de Ciencias (PREMIUM DESIGN)
+   ========================================================================== */
+
+/* Variables Globales (Light Mode) */
+:root {
+    /* Paleta de Colores Principal - EDITAR AQUÍ PARA CAMBIAR EL TEMA DEL PORTAL */
+    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --secondary-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    
+    --bg-color: #f0f4f8; /* Color de fondo general */
+    --surface-color: rgba(255, 255, 255, 0.7); /* Fondo de tarjetas (Glassmorphism) */
+    --surface-border: rgba(255, 255, 255, 0.5);
+    
+    --sidebar-bg: rgba(255, 255, 255, 0.85);
+    --sidebar-border: rgba(255, 255, 255, 0.4);
+    
+    --text-primary: #1e293b; /* Texto principal oscuro */
+    --text-secondary: #64748b; /* Texto secundario gris */
+    
+    --accent-color: #6366f1; /* Color de acento para botones y links activos */
+    --accent-hover: #4f46e5;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    
+    --font-family: 'Outfit', sans-serif;
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+}
+
+/* Variables Modo Oscuro */
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --surface-color: rgba(30, 41, 59, 0.7);
+    --surface-border: rgba(255, 255, 255, 0.1);
+    
+    --sidebar-bg: rgba(15, 23, 42, 0.85);
+    --sidebar-border: rgba(255, 255, 255, 0.05);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --accent-color: #818cf8;
+    --accent-hover: #6366f1;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+}
+
+/* Reseteo y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* Un sutil patrón de fondo o gradiente base */
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+/* Scrollbar moderno */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Layout Principal */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   SIDEBAR (MENÚ LATERAL) - ESTILO GLASSMORPHISM
+   ========================================================================== */
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    transition: var(--transition-smooth);
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+}
+
+.logo {
+    padding: 0 12px 24px;
+    border-bottom: 1px solid var(--sidebar-border);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 2rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(79, 70, 229, 0.3));
+}
+
+.logo h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Enlaces del Menú */
+.nav-link {
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(99, 102, 241, 0.05);
+    transform: translateX(4px);
+}
+
+.nav-link:hover i {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.nav-link.active {
+    color: white;
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.nav-link.active i {
+    color: white;
+}
+
+/* ==========================================================================
+   ÁREA PRINCIPAL Y CABECERA
+   ========================================================================== */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.top-header {
+    height: 70px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: transparent;
+    transition: var(--transition-smooth);
+}
+
+/* Botón de Tema (Micro-interacción) */
+.theme-btn {
+    background: var(--surface-color);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--surface-border);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
+}
+
+.theme-btn i {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   CONTENEDOR DE MÓDULOS (DONDE LOS ESTUDIANTES TRABAJAN)
+   ========================================================================== */
+.module-container {
+    padding: 0 40px 40px;
+    flex: 1;
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Títulos y Textos por Defecto */
+.module-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.module-container p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   ESTILOS BASE PARA LOS MÓDULOS (PLANTILLA QUIMICA, ETC.)
+   ========================================================================== */
+.modulo-wrapper {
+    background: var(--surface-color);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--surface-border);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-top: 20px;
+}
+
+.modulo-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--surface-border);
+    padding-bottom: 20px;
+}
+
+.modulo-header h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+/* Inputs y Controles Modernos */
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: flex-end;
+}
+
+.controles label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.controles input {
+    padding: 12px 20px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition-fast);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    width: 100%;
+    max-width: 250px;
+}
+
+[data-theme="dark"] .controles input {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.controles input:focus {
+    border-color: var(--accent-color);
+    background: transparent;
+}
+
+.controles button {
+    background: var(--primary-gradient);
+    color: white;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.controles button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
+}
+
+.controles button:active {
+    transform: translateY(1px);
+}
+
+/* Área de Resultados Premium */
+.resultados {
+    min-height: 200px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 2px dashed var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    transition: var(--transition-smooth);
+}
+
+[data-theme="dark"] .resultados {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Clases Útiles para que los estudiantes usen */
+.btn-secondary {
+    background: transparent !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    box-shadow: none !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(99, 102, 241, 0.1) !important;
+}
+
+.text-gradient {
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

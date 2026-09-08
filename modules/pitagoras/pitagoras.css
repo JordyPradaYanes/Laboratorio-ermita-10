@@ -1,0 +1,33 @@
+/* ── Módulo Pitágoras ─────────────────────────────────────────── */
+.pythagoras-container {
+  display: grid; grid-template-columns: 1fr 350px; gap: 2rem; align-items: center;
+}
+
+.pythagoras-visual {
+  background: var(--clr-surface); border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl); padding: 2rem; display: flex; justify-content: center;
+}
+
+.pythagoras-panel { display: flex; flex-direction: column; gap: 2rem; }
+
+.pythagoras-controls {
+  background: var(--clr-surface); border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+}
+
+.pythagoras-formula {
+  background: linear-gradient(135deg, var(--clr-surface2), var(--clr-surface3));
+  border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
+  padding: 2rem; font-family: var(--font-mono); font-size: 1.2rem;
+  display: flex; flex-direction: column; gap: 0.8rem; text-align: center;
+}
+
+.formula-line { color: var(--clr-text-muted); }
+.formula-result {
+  font-size: 2rem; font-weight: 800; color: var(--clr-text);
+  margin-top: 1rem; padding-top: 1rem; border-top: 2px dashed var(--clr-border);
+}
+
+@media(max-width:900px) {
+  .pythagoras-container { grid-template-columns: 1fr; }
+}

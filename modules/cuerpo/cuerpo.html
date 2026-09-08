@@ -1,0 +1,68 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-heart-pulse"></i> Explora el Cuerpo Humano</h2>
+  <p class="module-desc">Haz clic en cada órgano para conocer su función, datos curiosos y enfermedades relacionadas.</p>
+</div>
+
+<div class="body-container">
+
+  <!-- Figura SVG con hotspots de órganos -->
+  <div class="body-figure-wrap">
+    <svg class="body-svg" viewBox="0 0 300 550" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Silueta -->
+      <ellipse cx="150" cy="55" rx="40" ry="48" class="body-silhouette"/>
+      <rect x="110" y="100" width="80" height="120" rx="12" class="body-silhouette"/>
+      <rect x="80"  y="105" width="28" height="90"  rx="10" class="body-silhouette"/>
+      <rect x="192" y="105" width="28" height="90"  rx="10" class="body-silhouette"/>
+      <rect x="115" y="218" width="30" height="120" rx="10" class="body-silhouette"/>
+      <rect x="155" y="218" width="30" height="120" rx="10" class="body-silhouette"/>
+      <!-- Puntos de órganos (hotspots) -->
+      <circle class="organ-dot" cx="150" cy="140" r="15" data-organ="corazon" tabindex="0" role="button" aria-label="Corazón"/>
+      <circle class="organ-dot" cx="150" cy="165" r="12" data-organ="pulmon"  tabindex="0" role="button" aria-label="Pulmones"/>
+      <circle class="organ-dot" cx="148" cy="192" r="13" data-organ="estomago" tabindex="0" role="button" aria-label="Estómago"/>
+      <circle class="organ-dot" cx="150" cy="213" r="11" data-organ="intestino" tabindex="0" role="button" aria-label="Intestinos"/>
+      <circle class="organ-dot" cx="130" cy="195" r="9"  data-organ="higado"   tabindex="0" role="button" aria-label="Hígado"/>
+      <circle class="organ-dot" cx="170" cy="200" r="8"  data-organ="rinon"    tabindex="0" role="button" aria-label="Riñones"/>
+      <circle class="organ-dot" cx="150" cy="50"  r="14" data-organ="cerebro"  tabindex="0" role="button" aria-label="Cerebro"/>
+    </svg>
+
+    <!-- Etiquetas -->
+    <div class="organ-labels">
+      <span class="organ-lbl" style="top:22%;left:53%" data-organ="corazon"><i class="fa-solid fa-heart"></i> Corazón</span>
+      <span class="organ-lbl" style="top:29%;left:53%" data-organ="pulmon"><i class="fa-solid fa-lungs"></i> Pulmones</span>
+      <span class="organ-lbl" style="top:36%;left:53%" data-organ="estomago"><i class="fa-solid fa-circle"></i> Estómago</span>
+      <span class="organ-lbl" style="top:41%;left:53%" data-organ="intestino"><i class="fa-solid fa-arrows-spin"></i> Intestinos</span>
+      <span class="organ-lbl" style="top:37%;left:5%"  data-organ="higado"><i class="fa-solid fa-shield"></i> Hígado</span>
+      <span class="organ-lbl" style="top:39%;left:60%" data-organ="rinon"><i class="fa-solid fa-leaf"></i> Riñones</span>
+      <span class="organ-lbl" style="top:4%;left:53%"  data-organ="cerebro"><i class="fa-solid fa-brain"></i> Cerebro</span>
+    </div>
+  </div>
+
+  <!-- Panel de información del órgano seleccionado -->
+  <aside class="organ-info-panel" id="organInfoPanel">
+    <div class="organ-placeholder" id="organPlaceholder">
+      <i class="fa-solid fa-hand-pointer big-icon"></i>
+      <p>Haz clic en un órgano para ver su información</p>
+    </div>
+    <div class="organ-detail" id="organDetail" hidden>
+      <div class="organ-detail-header">
+        <i class="organ-icon fa-solid" id="organIcon"></i>
+        <h3 id="organTitle"></h3>
+      </div>
+      <div class="organ-detail-body">
+        <div class="detail-section">
+          <strong><i class="fa-solid fa-bookmark"></i> Función principal</strong>
+          <p id="organFunction"></p>
+        </div>
+        <div class="detail-section">
+          <strong><i class="fa-solid fa-lightbulb"></i> Dato curioso</strong>
+          <p id="organFact"></p>
+        </div>
+        <div class="detail-section">
+          <strong><i class="fa-solid fa-triangle-exclamation"></i> Enfermedad relacionada</strong>
+          <p id="organDisease"></p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</div>

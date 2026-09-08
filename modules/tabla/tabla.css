@@ -1,0 +1,87 @@
+/* ── Módulo Tabla Periódica ───────────────────────────────────── */
+.periodic-container { display:flex; flex-direction:column; gap:1.5rem; }
+
+.periodic-filters { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.filter-btn { font-family:var(--font-main); font-size:0.82rem; font-weight:600; padding:0.45rem 1rem; border-radius:99px; border:1px solid var(--clr-border); background:var(--clr-surface); color:var(--clr-text-muted); cursor:pointer; transition:all var(--transition-fast); }
+.filter-btn:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
+.filter-btn.active { background:var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
+
+.periodic-table-wrap {
+  overflow-x: auto;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+}
+
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(44px, 1fr));
+  grid-auto-rows: minmax(54px, auto);
+  gap: 4px;
+  min-width: 880px;
+}
+
+.element-cell {
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 3px 2px;
+  border: 1px solid transparent;
+  user-select: none;
+}
+.element-cell:hover {
+  transform: scale(1.18);
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+  border-color: rgba(255,255,255,0.6);
+}
+.element-cell.dimmed { opacity: 0.15; filter: grayscale(0.8); }
+
+.cell-num { font-size:0.55rem; color:rgba(255,255,255,0.75); align-self:flex-start; padding-left:2px; font-family:var(--font-mono); }
+.cell-sym { font-size:1.05rem; font-weight:800; color:#fff; font-family:var(--font-mono); line-height:1; }
+.cell-name { font-size:0.46rem; color:rgba(255,255,255,0.8); text-align:center; line-height:1.1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+
+.cell-series-marker {
+  grid-column: span 1;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--clr-border);
+  background: var(--clr-surface2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  text-align: center;
+  padding: 2px;
+  user-select: none;
+}
+.cell-series-spacer {
+  grid-column: 1 / -1;
+  height: 12px;
+}
+
+.fam-metal-alcalino       { background:linear-gradient(135deg, #ef476f, #b82a4c); }
+.fam-metal-alcalinoterreo  { background:linear-gradient(135deg, #ff9f1c, #b86904); }
+.fam-metal-transicion      { background:linear-gradient(135deg, #6c63ff, #473dc4); }
+.fam-metal-otro           { background:linear-gradient(135deg, #4895ef, #2365bf); }
+.fam-semimetal            { background:linear-gradient(135deg, #06d6a0, #048c68); }
+.fam-no-metal             { background:linear-gradient(135deg, #f72585, #a30e52); }
+.fam-halogens             { background:linear-gradient(135deg, #4cc9f0, #178eb5); }
+.fam-gas-noble            { background:linear-gradient(135deg, #ffd166, #b88f1c); }
+.fam-lanthanide           { background:linear-gradient(135deg, #70d6ff, #248ab5); }
+.fam-actinide             { background:linear-gradient(135deg, #c77dff, #7a31b5); }
+.fam-placeholder          { background:transparent; cursor:default; pointer-events:none; }
+
+.modal-element-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--clr-border); }
+.modal-element-symbol { font-size:3rem; font-weight:800; font-family:var(--font-mono); color:var(--clr-primary); min-width:75px; text-align:center; background:var(--clr-surface2); border-radius:var(--radius-md); padding:0.6rem; border:1px solid var(--clr-border); }
+.modal-element-body { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.modal-element-body .detail-item { display:flex; flex-direction:column; gap:0.2rem; }
+.modal-element-body .detail-item small { font-size:0.75rem; color:var(--clr-text-muted); }
+.modal-element-body .detail-item strong { font-size:1rem; color:var(--clr-text); }

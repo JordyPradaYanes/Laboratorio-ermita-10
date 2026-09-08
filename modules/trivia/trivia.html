@@ -1,0 +1,60 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-trophy"></i> Trivia Multijugador</h2>
+  <p class="module-desc">Juega con un amigo en la misma pantalla. Respondan preguntas de ciencias generales por turnos.</p>
+</div>
+
+<div class="trivia-container">
+  
+  <div class="trivia-setup" id="triviaSetup">
+    <div class="setup-card">
+      <i class="fa-solid fa-users big-icon"></i>
+      <h3>Configurar Partida</h3>
+      <div class="input-group">
+        <label>Jugador 1</label>
+        <input type="text" id="trivP1Name" class="text-input" value="Jugador 1" />
+      </div>
+      <div class="input-group">
+        <label>Jugador 2</label>
+        <input type="text" id="trivP2Name" class="text-input" value="Jugador 2" />
+      </div>
+      <button class="btn-primary" id="trivStartBtn" style="margin-top:1rem; width:100%; justify-content:center;">
+        <i class="fa-solid fa-play"></i> Comenzar Trivia
+      </button>
+    </div>
+  </div>
+
+  <div class="trivia-game" id="triviaGame" hidden>
+    <div class="trivia-hud">
+      <div class="triv-player" id="trivP1Card">
+        <i class="fa-solid fa-user"></i>
+        <div class="triv-pname" id="trivP1Label">Jugador 1</div>
+        <div class="triv-pscore mono" id="trivP1Score">0</div>
+      </div>
+      <div class="triv-turn" id="trivTurnLabel">Turno de: Jugador 1</div>
+      <div class="triv-player" id="trivP2Card">
+        <i class="fa-regular fa-user"></i>
+        <div class="triv-pname" id="trivP2Label">Jugador 2</div>
+        <div class="triv-pscore mono" id="trivP2Score">0</div>
+      </div>
+    </div>
+
+    <div class="triv-question-card">
+      <div class="triv-q-counter" id="trivQCounter">Pregunta 1 de 10</div>
+      <h3 class="triv-q-text" id="trivQText">¿Pregunta?</h3>
+      <div class="triv-options" id="trivOptions">
+        <!-- Generado por JS -->
+      </div>
+      <button class="btn-primary" id="trivNextBtn" hidden>Siguiente Turno <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <div class="trivia-win" id="triviaWin" hidden>
+    <div class="win-card">
+      <i class="fa-solid fa-crown big-icon" style="color:var(--clr-warning);"></i>
+      <h3 id="trivWinTitle">¡Ganador!</h3>
+      <p id="trivWinDesc">Jugador 1 gana con 5 puntos.</p>
+      <button class="btn-primary" id="trivRestartBtn"><i class="fa-solid fa-rotate-right"></i> Nueva Partida</button>
+    </div>
+  </div>
+
+</div>

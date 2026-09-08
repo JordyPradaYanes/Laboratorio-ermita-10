@@ -1,0 +1,33 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-drafting-compass"></i> Teorema de Pitágoras</h2>
+  <p class="module-desc">Ajusta los catetos de un triángulo rectángulo para ver cómo cambia la hipotenusa (a² + b² = c²).</p>
+</div>
+
+<div class="pythagoras-container">
+  <div class="pythagoras-visual">
+    <canvas id="pythagorasCanvas" width="480" height="460" style="max-width:100%; height:auto;"></canvas>
+  </div>
+
+  <div class="pythagoras-panel">
+    <div class="pythagoras-controls">
+      <div class="input-group">
+        <label for="pythA">Cateto a (altura): <span id="valPythA" class="mono">3</span></label>
+        <input type="range" id="pythA" min="1" max="15" step="1" value="3" class="slider" />
+      </div>
+      <div class="input-group">
+        <label for="pythB">Cateto b (base): <span id="valPythB" class="mono">4</span></label>
+        <input type="range" id="pythB" min="1" max="15" step="1" value="4" class="slider" />
+      </div>
+    </div>
+
+    <div class="pythagoras-formula">
+      <div class="formula-line">a² + b² = c²</div>
+      <div class="formula-line"><span id="formA2">3²</span> + <span id="formB2">4²</span> = c²</div>
+      <div class="formula-line"><span id="formA2val">9</span> + <span id="formB2val">16</span> = c²</div>
+      <div class="formula-line"><span id="formSum">25</span> = c²</div>
+      <div class="formula-result">
+        c = <span id="formC" style="color:var(--clr-primary);">5</span>
+      </div>
+    </div>
+  </div>
+</div>

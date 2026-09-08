@@ -1,0 +1,41 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-table-cells"></i> Tabla Periódica Interactiva</h2>
+  <p class="module-desc">Filtra por familia de elementos y haz clic para ver detalles de cada uno.</p>
+</div>
+
+<div class="periodic-container">
+  <div class="periodic-filters" id="periodicFilters">
+    <button class="filter-btn active" data-family="all">Todos (118)</button>
+    <button class="filter-btn" data-family="metal-alcalino">Metales alcalinos</button>
+    <button class="filter-btn" data-family="metal-alcalinoterreo">Alcalinotérreos</button>
+    <button class="filter-btn" data-family="metal-transicion">Metales de transición</button>
+    <button class="filter-btn" data-family="lanthanide">Lantánidos</button>
+    <button class="filter-btn" data-family="actinide">Actínidos</button>
+    <button class="filter-btn" data-family="metal-otro">Otros metales</button>
+    <button class="filter-btn" data-family="semimetal">Metaloides</button>
+    <button class="filter-btn" data-family="no-metal">No metales</button>
+    <button class="filter-btn" data-family="halogens">Halógenos</button>
+    <button class="filter-btn" data-family="gas-noble">Gases nobles</button>
+  </div>
+
+  <div class="periodic-table-wrap">
+    <div class="periodic-table" id="periodicTable">
+      <!-- Generado por JS -->
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="elementModal" role="dialog" aria-modal="true" aria-labelledby="modalElementTitle" hidden>
+  <div class="modal-card">
+    <button class="modal-close" id="closeElementModal" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-element-header">
+      <div class="modal-element-symbol" id="modalSymbol"></div>
+      <div>
+        <h3 id="modalElementTitle"></h3>
+        <p id="modalElementSub" style="color:var(--clr-text-muted); font-size:0.85rem;"></p>
+      </div>
+    </div>
+    <div class="modal-element-body" id="modalElementBody"></div>
+  </div>
+</div>

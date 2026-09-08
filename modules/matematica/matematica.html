@@ -1,0 +1,42 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-calculator"></i> Misión Matemática</h2>
+  <p class="module-desc">Resuelve operaciones aleatorias antes de que el tiempo termine. ¡Pon a prueba tu velocidad mental!</p>
+</div>
+
+<div class="math-container">
+  <div class="math-hud">
+    <div class="hud-card"><span class="hud-label">Puntos</span><span class="hud-val mono" id="mathScore">0</span></div>
+    <div class="hud-card timer-card"><span class="hud-label">Tiempo</span><span class="hud-val mono" id="mathTimer">30</span></div>
+    <div class="hud-card"><span class="hud-label">Racha</span><span class="hud-val mono" id="mathStreak"><i class="fa-solid fa-fire"></i> 0</span></div>
+  </div>
+
+  <div class="math-game-area" id="mathGameArea">
+    
+    <div class="math-start-screen" id="mathStartScreen">
+      <i class="fa-solid fa-calculator big-icon"></i>
+      <h3>¿Listo para el reto?</h3>
+      <p>Responde la mayor cantidad de operaciones correctas en 30 segundos.</p>
+      <div class="difficulty-btns">
+        <button class="btn-primary" id="mathStartEasy"><i class="fa-regular fa-face-smile"></i> Fácil</button>
+        <button class="btn-primary" id="mathStartMed"><i class="fa-solid fa-bolt"></i> Medio</button>
+        <button class="btn-primary" id="mathStartHard"><i class="fa-solid fa-fire"></i> Difícil</button>
+      </div>
+    </div>
+
+    <div class="math-play-screen" id="mathPlayScreen" hidden>
+      <div class="math-question" id="mathQuestion">?</div>
+      <input type="number" class="math-input" id="mathInput" placeholder="Tu respuesta..." autocomplete="off" />
+      <button class="btn-primary" id="mathSubmit"><i class="fa-solid fa-check"></i> Confirmar</button>
+      <div class="math-feedback" id="mathFeedback"></div>
+    </div>
+
+    <div class="math-result-screen" id="mathResultScreen" hidden>
+      <i class="fa-solid fa-trophy big-icon" id="mathResultIcon"></i>
+      <h3>¡Tiempo!</h3>
+      <p>Tu puntuación: <strong class="mono" id="mathFinalScore" style="font-size:1.5rem; color:var(--clr-primary);">0</strong></p>
+      <p>Respuestas correctas: <strong id="mathCorrect">0</strong></p>
+      <button class="btn-primary" id="mathRestart"><i class="fa-solid fa-rotate-right"></i> Jugar de nuevo</button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="module-header">
+  <h2><i class="fa-solid fa-clone"></i> Juego de Memoria en Inglés</h2>
+  <p class="module-desc">Encuentra los pares de palabras en inglés y su traducción al español.</p>
+</div>
+
+<div class="memory-container">
+  <div class="memory-hud">
+    <div class="hud-card"><span class="hud-label">Intentos</span><span class="hud-val mono" id="memAttempts">0</span></div>
+    <div class="hud-card"><span class="hud-label">Pares</span><span class="hud-val mono" id="memPairs">0 / 8</span></div>
+    <div class="hud-card"><span class="hud-label">Tiempo</span><span class="hud-val mono" id="memTimer">0s</span></div>
+  </div>
+
+  <div class="memory-board" id="memoryBoard" role="grid" aria-label="Tablero de memoria"></div>
+
+  <div class="memory-controls">
+    <button class="btn-primary" id="memRestart"><i class="fa-solid fa-shuffle"></i> Nueva partida</button>
+  </div>
+
+  <div class="memory-win" id="memWin" hidden>
+    <div class="win-card">
+      <i class="fa-solid fa-trophy big-icon"></i>
+      <h3>¡Excelente!</h3>
+      <p>Completaste el juego en <strong id="memWinTime"></strong> con <strong id="memWinAttempts"></strong> intentos.</p>
+      <button class="btn-primary" id="memWinRestart"><i class="fa-solid fa-rotate-right"></i> Jugar de nuevo</button>
+    </div>
+  </div>
+</div>

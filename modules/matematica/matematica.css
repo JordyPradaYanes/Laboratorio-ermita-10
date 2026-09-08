@@ -1,0 +1,38 @@
+/* ── Módulo Matemática ────────────────────────────────────────── */
+.math-container { max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:1.5rem; }
+.math-hud { display:flex; gap:1rem; justify-content:center; }
+
+.math-game-area {
+  background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-xl);
+  padding:3rem 2rem; text-align:center; min-height:350px; display:flex; align-items:center; justify-content:center;
+}
+
+.math-start-screen, .math-play-screen, .math-result-screen {
+  display:flex; flex-direction:column; align-items:center; gap:1.2rem; width:100%;
+}
+.math-start-screen[hidden], .math-play-screen[hidden], .math-result-screen[hidden] {
+  display: none !important;
+}
+
+.math-start-screen h3 { font-size:1.5rem; font-weight:700; }
+.difficulty-btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; }
+
+.math-question {
+  font-size:3rem; font-weight:800; font-family:var(--font-mono); color:var(--clr-text);
+  background:var(--clr-surface2); padding:1.2rem 2.5rem; border-radius:var(--radius-lg); border:2px solid var(--clr-border); letter-spacing:0.05em;
+  box-shadow:var(--shadow-sm);
+}
+
+.math-input {
+  font-family:var(--font-mono); font-size:1.4rem; font-weight:700; text-align:center; padding:0.8rem 1rem;
+  background:var(--clr-surface2); border:2px solid var(--clr-border); border-radius:var(--radius-md); color:var(--clr-text);
+  width:260px; max-width:90%; transition:border-color var(--transition-fast),box-shadow var(--transition-fast);
+}
+.math-input::placeholder { font-family:var(--font-main); font-size:1rem; font-weight:500; opacity:0.6; }
+.math-input:focus { outline:none; border-color:var(--clr-primary); box-shadow:0 0 0 3px var(--clr-primary-glow); }
+
+.math-feedback { font-size:1.1rem; font-weight:700; min-height:1.5rem; transition:color var(--transition-fast); }
+.math-feedback.correct { color:var(--clr-success); }
+.math-feedback.wrong   { color:var(--clr-error); }
+
+@media(max-width:600px) { .math-hud { gap:0.5rem; } }

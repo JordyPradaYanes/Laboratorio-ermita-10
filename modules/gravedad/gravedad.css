@@ -1,0 +1,12 @@
+/* ── Módulo Gravedad ──────────────────────────────────────────── */
+.gravity-container { display:grid; grid-template-columns:300px 1fr; gap:2rem; max-width:800px; margin:0 auto; }
+
+.gravity-panel { background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-xl); padding:1.5rem; display:flex; justify-content:center; align-items:center; }
+#gravityCanvas { width:100%; height:450px; background:linear-gradient(to bottom, var(--clr-surface2), var(--clr-surface3)); border-radius:var(--radius-lg); border:1px solid var(--clr-border); }
+
+.gravity-controls { background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-xl); padding:2rem; }
+.gravity-stats[hidden] { display: none !important; }
+.env-btns { display:flex; flex-direction:column; gap:0.5rem; }
+.env-btns button { text-align:left; }
+
+@media(max-width:900px) { .gravity-container { grid-template-columns:1fr; } }

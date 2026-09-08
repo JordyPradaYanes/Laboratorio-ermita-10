@@ -1,0 +1,44 @@
+/* ── Módulo Cuerpo Humano ─────────────────────────────────────── */
+.body-container { display:grid; grid-template-columns:320px 1fr; gap:2rem; align-items:start; }
+
+.body-figure-wrap { position:relative; max-width:320px; }
+.body-svg { width:100%; height:auto; background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-lg); padding:1rem; }
+.body-silhouette { fill:var(--clr-surface3); }
+
+.organ-dot { fill:var(--clr-primary); opacity:0.8; cursor:pointer; transition:all var(--transition-fast); filter:drop-shadow(0 0 4px var(--clr-primary-glow)); }
+.organ-dot:hover,.organ-dot:focus { opacity:1; fill:var(--clr-accent); filter:drop-shadow(0 0 8px rgba(0,212,170,0.6)); outline:none; }
+.organ-dot.active-organ { fill:var(--clr-accent); }
+
+.organ-labels { position:absolute; inset:0; pointer-events:none; }
+.organ-lbl {
+  position:absolute; font-size:0.68rem; font-weight:600;
+  background:rgba(13,15,26,0.8); backdrop-filter:blur(4px);
+  border:1px solid var(--clr-border); border-radius:99px;
+  padding:0.15rem 0.5rem; white-space:nowrap; color:var(--clr-text);
+  pointer-events:all; cursor:pointer;
+  display:flex; align-items:center; gap:0.3rem;
+  transition:all var(--transition-fast);
+}
+.organ-lbl:hover { border-color:var(--clr-accent); color:var(--clr-accent); }
+.organ-lbl i { font-size:0.65rem; }
+
+.organ-info-panel {
+  background:var(--clr-surface); border:1px solid var(--clr-border);
+  border-radius:var(--radius-lg); padding:2rem;
+  min-height:350px; display:flex; align-items:center; justify-content:center;
+}
+
+.organ-placeholder { text-align:center; color:var(--clr-text-muted); }
+.organ-placeholder[hidden], .organ-detail[hidden] { display: none !important; }
+.organ-placeholder .big-icon { font-size:3.5rem; display:block; color:var(--clr-primary); margin-bottom:0.5rem; }
+
+.organ-detail { width:100%; }
+.organ-detail-header { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; }
+.organ-icon { font-size:2.5rem; color:var(--clr-primary); }
+.organ-detail-header h3 { font-size:1.5rem; font-weight:700; }
+
+.detail-section { margin-bottom:1.2rem; }
+.detail-section strong { display:flex; align-items:center; gap:0.4rem; margin-bottom:0.4rem; font-size:0.85rem; color:var(--clr-primary); }
+.detail-section p { color:var(--clr-text-muted); font-size:0.92rem; line-height:1.6; }
+
+@media(max-width:900px) { .body-container { grid-template-columns:1fr; } }
