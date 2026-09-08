@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // 📝 ZONA DE HACKEO: ¡Tu propio diccionario!
+  // 📌 EDITAR AQUÍ: ¡Tu propio diccionario!
   // Esta es la lista de palabras del juego.
   // "en" significa English (Inglés) y "es" Español.
   // ¡Agrega tus propias palabras favoritas siguiendo el mismo formato!
@@ -154,7 +154,7 @@
       
     } else {
       // Si te equivocaste...
-      // ⏱️ ZONA DE HACKEO: Tiempo de penalización
+      // 📌 EDITAR AQUÍ: Tiempo de penalización
       // Esperamos 1 segundo (1000ms) para que veas tu error antes de esconderlas
       // ¡Cambia 1000 por 3000 (3 segundos) si necesitas más tiempo para memorizar!
       setTimeout(() => {

@@ -8,7 +8,7 @@
   // Variables importantes. ¡Imagina que son cajas donde guardamos información!
   let canvas, ctx;
   
-  // 🌍 ZONA DE HACKEO: ¡Cambia la gravedad!
+  // 📌 EDITAR AQUÍ: ¡Cambia la gravedad!
   // En la Tierra, la gravedad es 9.8. Pero, ¿qué pasa si pones 1.6 (Luna) o 25 (Júpiter)?
   // ¡Cámbialo y mira cómo cae de rápido la bola!
   let g = 9.8; 
@@ -25,7 +25,7 @@
   let raf = null; // Esto nos ayuda a detener la animación cuando queramos
   let dropping = false; // ¿Está cayendo la bola? Al principio es "falso" (no)
   
-  // 🎨 ZONA DE HACKEO: ¡Apariencia!
+  // 📌 EDITAR AQUÍ: ¡Apariencia!
   // radius: Es el tamaño de la bola. ¿Qué pasa si pones 30? ¡Bola gigante!
   const radius = 15;
   const scale = 40; // píxeles por metro (es como el zoom de la pantalla)
@@ -54,9 +54,10 @@
 
     // Dibujamos el suelo
     const groundY = topY + maxH * scale;
-    ctx.fillStyle = 'var(--clr-surface)';
+    // Corregido: Canvas no lee var() directamente de CSS, usamos getComputedStyle o fallback
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--clr-surface') || '#ffffff';
     ctx.fillRect(0, groundY, W, H - groundY);
-    ctx.strokeStyle = 'var(--clr-border)';
+    ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--clr-border') || '#cccccc';
     ctx.lineWidth = 3;
     ctx.beginPath(); ctx.moveTo(0, groundY); ctx.lineTo(W, groundY); ctx.stroke();
     
@@ -72,7 +73,7 @@
     // Dibujamos el objeto (nuestra esfera)
     ctx.beginPath();
     ctx.arc(W/2, y, radius, 0, Math.PI*2); // Dibuja un círculo perfecto
-    ctx.fillStyle = 'var(--clr-accent)'; // Pinta el círculo con el color de acento
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--clr-accent') || '#00d4aa'; 
     ctx.fill();
     
     // Le ponemos un brillo mágico a la bola

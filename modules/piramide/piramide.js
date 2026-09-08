@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // 🍎 ZONA DE HACKEO: ¡Agrega tu comida favorita!
+  // 📌 EDITAR AQUÍ: ¡Agrega tu comida favorita!
   // Esta es la lista de alimentos. 
   // Cada alimento tiene un nombre, un dibujo (icon) y un nivel (1 al 4).
   // Nivel 4: Base (lo que más hay que comer, como arroz)

@@ -1,28 +1,75 @@
-<!-- ========================================================
-     PLANTILLA DE MÓDULO: HTML
-     Sigue los comentarios "EDITAR AQUÍ" para completar el módulo
-     ======================================================== -->
+<!-- =====================================================================
+     MÓDULO: Laboratorio de Reacciones Químicas
+     Descripción: Simulador de reacciones. El estudiante elige dos reactivos
+     y observa el producto, la ecuación balanceada y el tipo de reacción.
+     ====================================================================== -->
 
-<div class="modulo-wrapper">
-    <header class="modulo-header">
-        <!-- EDITAR AQUÍ: Agrega el título de tu módulo y una breve descripción -->
-        <h2>[Título del Módulo]</h2>
-        <p>[Descripción breve de lo que el usuario aprenderá o hará aquí]</p>
-    </header>
+<div class="module-header">
+  <h2><i class="fa-solid fa-flask"></i> Laboratorio de Reacciones Químicas</h2>
+  <p class="module-desc">
+    Selecciona dos reactivos y mezclalos para descubrir el producto, la ecuación balanceada y el tipo de reacción.
+  </p>
+</div>
 
-    <section class="modulo-interactivo">
-        <!-- EDITAR AQUÍ: Zona de inputs y controles -->
-        <div class="controles">
-            <label for="input-ejemplo">Ingresa un valor:</label>
-            <input type="text" id="input-ejemplo" placeholder="Ej: 10">
-            
-            <button id="btn-accion">Calcular / Ejecutar</button>
-        </div>
+<div class="chem-lab-container">
 
-        <!-- EDITAR AQUÍ: Zona donde se mostrarán los resultados o gráficos -->
-        <div class="resultados" id="area-resultados">
-            <!-- Puedes usar canvas, tablas o simplemente texto -->
-            <p>El resultado aparecerá aquí.</p>
-        </div>
-    </section>
+  <!-- ── Panel de selección de reactivos ── -->
+  <div class="chem-selectors">
+
+    <div class="chem-beaker-panel">
+      <div class="chem-beaker" id="beaker1">
+        <div class="beaker-liquid" id="beakerLiquid1"></div>
+        <span class="beaker-label" id="beakerLabel1">?</span>
+      </div>
+      <h4>Reactivo 1</h4>
+      <!-- 📌 EDITAR AQUÍ: Agrega nuevos botones copiando el formato del HTML generado por JS -->
+      <div class="chem-btn-grid" id="reactiveButtons1" role="group" aria-label="Selección de reactivo 1">
+        <!-- Generado por JS -->
+      </div>
+    </div>
+
+    <div class="chem-plus-symbol">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+
+    <div class="chem-beaker-panel">
+      <div class="chem-beaker" id="beaker2">
+        <div class="beaker-liquid" id="beakerLiquid2"></div>
+        <span class="beaker-label" id="beakerLabel2">?</span>
+      </div>
+      <h4>Reactivo 2</h4>
+      <div class="chem-btn-grid" id="reactiveButtons2" role="group" aria-label="Selección de reactivo 2">
+        <!-- Generado por JS -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Botón de mezcla ── -->
+  <div class="chem-action-row">
+    <button class="btn-primary" id="mixBtn" disabled>
+      <i class="fa-solid fa-burst"></i> ¡Mezclar!
+    </button>
+    <button class="btn-secondary" id="resetBtn" style="display:none;">
+      <i class="fa-solid fa-rotate-right"></i> Reiniciar
+    </button>
+  </div>
+
+  <!-- ── Panel de resultado de la reacción ── -->
+  <div class="reaction-result" id="reactionResult" hidden>
+    <div class="reaction-equation" id="reactionEquation"></div>
+    <div class="reaction-meta">
+      <div class="reaction-type-badge" id="reactionTypeBadge"></div>
+      <div class="reaction-product" id="reactionProduct"></div>
+    </div>
+    <p class="reaction-description" id="reactionDescription"></p>
+  </div>
+
+  <!-- ── Mensaje cuando no hay reacción conocida ── -->
+  <div class="no-reaction" id="noReaction" hidden>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <p>No se conoce una reacción simple entre estos dos reactivos. <br>
+    <strong>¡Intenta otra combinación!</strong></p>
+  </div>
+
 </div>

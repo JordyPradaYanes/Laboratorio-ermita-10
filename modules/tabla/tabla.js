@@ -6,7 +6,7 @@
 (function () {
   "use strict";
 
-  // 🧪 ZONA DE HACKEO: ¡El Gran Diccionario!
+  // 📌 EDITAR AQUÍ: ¡El Gran Diccionario!
   // Aquí están todos los 118 elementos del universo.
   // Cada elemento tiene: Número, Símbolo, Nombre, Familia (color), Columna, Fila, Peso, Estado y una Historia.
   // ¡Busca tu elemento favorito (como el Oro o el Oxígeno) y cámbiale su historia!
@@ -1333,6 +1333,7 @@
   // 🎯 Variables para recordar qué estamos haciendo
   let currentFamily = "all"; // ¿Qué familia estamos viendo? Al principio "all" (todas)
   let $table, $modal; // Nuestras conexiones con la pantalla
+  let _onKeydown = null; // Referencia al listener de teclado (para limpiarlo en stop())
 
   // 🎨 Esta es la función que dibuja toda la tabla en tu pantalla
   function render() {
@@ -1505,10 +1506,20 @@
     $modal.addEventListener("click", (e) => {
       if (e.target === $modal) $modal.hidden = true;
     });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !$modal.hidden) $modal.hidden = true;
-    });
+    // Guardamos la referencia para poder limpiarla en stop() y evitar fugas de memoria
+    _onKeydown = (e) => {
+      if (e.key === 'Escape' && !$modal.hidden) $modal.hidden = true;
+    };
+    document.addEventListener('keydown', _onKeydown);
   }
 
-  window.MODULES.tabla = { init };
+  // Limpia el listener de teclado cuando el router cambia de módulo
+  function stop() {
+    if (_onKeydown) {
+      document.removeEventListener('keydown', _onKeydown);
+      _onKeydown = null;
+    }
+  }
+
+  window.MODULES.tabla = { init, stop };
 })();

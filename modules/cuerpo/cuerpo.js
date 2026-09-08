@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // 🫀 ZONA DE HACKEO: El Gran Diccionario Médico
+  // 📌 EDITAR AQUÍ: El Gran Diccionario Médico
   // Aquí están guardados todos los secretos de los órganos.
   // Puedes cambiar el nombre, lo que hacen, o los datos curiosos ("fact").
   // Por ejemplo, busca el cerebro y ponle un dato curioso tuyo.

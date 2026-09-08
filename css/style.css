@@ -34,6 +34,25 @@
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-full: 9999px;
+    /* ── Aliases de compatibilidad para el sistema de módulos (--clr-*) ── */
+    /* Estas variables mapean el design system a los nombres que usan los módulos */
+    --clr-primary:       #6366f1;                       /* Color principal (índigo) */
+    --clr-primary-glow:  rgba(99, 102, 241, 0.3);       /* Brillo del color principal */
+    --clr-accent:        #00d4aa;                       /* Color de acento secundario (verde teal) */
+    --clr-surface:       var(--surface-color);          /* Fondo de tarjetas */
+    --clr-surface2:      rgba(255, 255, 255, 0.45);     /* Fondo secundario (más oscuro) */
+    --clr-surface3:      rgba(241, 245, 249, 0.60);     /* Fondo terciario */
+    --clr-border:        var(--surface-border);         /* Color de bordes */
+    --clr-text:          var(--text-primary);           /* Texto principal */
+    --clr-text-muted:    var(--text-secondary);         /* Texto secundario/atenuado */
+    --font-main:         var(--font-family);            /* Fuente principal (Outfit) */
+    --font-mono:         'JetBrains Mono', 'Courier New', monospace; /* Fuente monoespaciada para datos */
+    --radius-sm:         6px;                           /* Radio pequeño */
+    --radius-xl:         20px;                          /* Radio extra grande */
+    --transition:        var(--transition-smooth);      /* Transición estándar */
+    --clr-success:       #06d6a0;                       /* Verde de éxito/correcto */
+    --clr-error:         #ef476f;                       /* Rojo de error/incorrecto */
+    --clr-warning:       #ffd166;                       /* Amarillo de advertencia */
 }
 
 /* Variables Modo Oscuro */
@@ -54,6 +73,12 @@
     --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+
+    /* Overrides de aliases para Modo Oscuro */
+    --clr-primary:      #818cf8;                       /* Índigo más claro en modo oscuro */
+    --clr-primary-glow: rgba(129, 140, 248, 0.3);
+    --clr-surface2:     rgba(30, 41, 59, 0.50);
+    --clr-surface3:     rgba(15, 23, 42, 0.45);
 }
 
 /* Reseteo y Base */
@@ -401,4 +426,162 @@ body {
     background: var(--secondary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   CLASES UTILITARIAS DE MÓDULOS
+   Compartidas por todos los módulos del portal
+   ========================================================================== */
+
+/* ── Cabecera de módulo ── */
+.module-header {
+    margin-bottom: 2rem;
+}
+.module-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.module-header h2 i {
+    color: var(--clr-primary);
+}
+.module-desc {
+    font-size: 1rem;
+    color: var(--clr-text-muted);
+    line-height: 1.6;
+}
+
+/* ── HUD (Heads-Up Display) — Cartelitos de datos ── */
+.hud-card {
+    background: var(--clr-surface);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+.hud-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+.hud-val {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--clr-text);
+    line-height: 1;
+}
+.mono {
+    font-family: var(--font-mono);
+}
+
+/* ── Botón Primario Global ── */
+.btn-primary {
+    background: var(--primary-gradient);
+    color: white;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
+}
+.btn-primary:active {
+    transform: translateY(1px);
+}
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Grupos de input y controles ── */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+}
+
+/* ── Slider (barra deslizante) ── */
+.slider {
+    width: 100%;
+    accent-color: var(--clr-primary);
+    cursor: pointer;
+    height: 6px;
+    border-radius: var(--radius-full);
+}
+
+/* ── Input de texto ── */
+.text-input {
+    padding: 0.75rem 1rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    background: var(--clr-surface2);
+    border: 2px solid var(--clr-border);
+    border-radius: var(--radius-md);
+    color: var(--clr-text);
+    outline: none;
+    transition: var(--transition-fast);
+    width: 100%;
+}
+.text-input:focus {
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 3px var(--clr-primary-glow);
+}
+
+/* ── Icono grande para pantallas de inicio/victoria ── */
+.big-icon {
+    font-size: 3.5rem;
+    color: var(--clr-primary);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* ── Botón en modo activo (planeta/tipo seleccionado) ── */
+.active-mode {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35) !important;
+}
+
+/* ── Timer urgente (últimos 10 segundos) ── */
+.timer-card.urgent {
+    border-color: var(--clr-error) !important;
+    animation: pulseUrgent 1s ease-in-out infinite;
+}
+@keyframes pulseUrgent {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.55; }
+}
+
+/* ── Animación de entrada para modales de victoria ── */
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to   { opacity: 1; transform: scale(1)  translateY(0); }
 }

@@ -11,7 +11,7 @@
   let streak = 0;      // Tu racha (cuántas correctas seguidas llevas)
   let correct = 0;     // Cuántas has respondido bien en total
   
-  // ⏱️ ZONA DE HACKEO: ¡Más tiempo!
+  // 📌 EDITAR AQUÍ: ¡Más tiempo!
   // Aquí decimos que el juego dura 30 segundos.
   // ¿Qué pasa si pones 60 (un minuto) o 10 (súper rápido)?
   let timerLeft = 30;  
@@ -92,7 +92,7 @@
     if (val === answer) {
       streak++; // ¡Subes tu racha de fuego!
       
-      // 🌟 ZONA DE HACKEO: ¡Súper Puntos!
+      // 📌 EDITAR AQUÍ: ¡Súper Puntos!
       // Si aciertas 3 seguidas, te da 2 puntos extra.
       // ¿Y si quieres que dé 100 puntos extra? ¡Cambia ese 2 por 100!
       const bonus = streak >= 3 ? 2 : 0; 
@@ -121,7 +121,7 @@
 
   // ⏰ Arranca el cronómetro
   function startTimer() {
-    timerLeft = 30; // ⏱️ ZONA DE HACKEO: Si cambiaste arriba, cámbialo aquí también (ej: 60)
+    timerLeft = 30; // 📌 EDITAR AQUÍ: Si cambiaste arriba, cámbialo aquí también (ej: 60)
     $timer.textContent = timerLeft;
     document.querySelector('.timer-card')?.classList.remove('urgent');
 

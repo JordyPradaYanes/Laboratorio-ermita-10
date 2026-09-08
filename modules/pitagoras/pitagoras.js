@@ -43,7 +43,7 @@
     const ptB = { x: cx + triW, y: cy }; // Derecha (la punta que está lejos)
     const ptC = { x: cx, y: cy };         // La esquina cuadrada (90 grados)
 
-    // 🎨 ZONA DE HACKEO: La Cuadrícula de Fondo
+    // 📌 EDITAR AQUÍ: La Cuadrícula de Fondo
     // Dibuja las líneas tenues de fondo, como en un cuaderno de matemáticas.
     // Prueba cambiar 'rgba(120, 130, 200, 0.08)' por 'rgba(255, 0, 0, 0.5)' para líneas rojas.
     ctx.strokeStyle = 'rgba(120, 130, 200, 0.08)';
@@ -73,7 +73,7 @@
     const sq = Math.min(22, scale * 0.4);
     ctx.fillStyle = 'rgba(0, 212, 170, 0.15)';
     ctx.fillRect(ptC.x, ptC.y - sq, sq, sq); // Pinta el cuadradito
-    ctx.strokeStyle = 'var(--clr-accent)';
+    ctx.strokeStyle = '#00d4aa'; // --clr-accent: color del cuadrado del ángulo recto
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(ptC.x, ptC.y - sq);
@@ -84,13 +84,13 @@
     // Dibujar un puntito lindo adentro del cuadradito
     ctx.beginPath();
     ctx.arc(ptC.x + sq / 2, ptC.y - sq / 2, 2.5, 0, Math.PI * 2);
-    ctx.fillStyle = 'var(--clr-accent)';
+    ctx.fillStyle = '#00d4aa'; // --clr-accent: puntito del ángulo recto
     ctx.fill();
 
     // 📐 Dibujamos los bordes (los lados a, b y c)
     
     // Cateto "a" (la línea de la izquierda, parada)
-    // 🎨 ZONA DE HACKEO: ¡Cambia el color de la línea A!
+    // 📌 EDITAR AQUÍ: ¡Cambia el color de la línea A!
     ctx.strokeStyle = '#ef476f'; // Rosado
     ctx.lineWidth = 4;
     ctx.lineCap = 'round';
@@ -134,7 +134,7 @@
       const padW = 10, padH = 6;
       const bw = m.width + padW * 2;
       const bh = 22;
-      ctx.fillStyle = 'rgba(19, 22, 41, 0.9)'; // Fondo oscuro del cartelito
+      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--clr-surface') || 'rgba(19, 22, 41, 0.9)'; 
       ctx.beginPath();
       ctx.roundRect(x - bw / 2, y - bh / 2, bw, bh, 6);
       ctx.fill();

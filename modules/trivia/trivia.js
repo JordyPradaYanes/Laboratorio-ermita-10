@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // 📝 ZONA DE HACKEO: ¡Tu propio banco de preguntas!
+  // 📌 EDITAR AQUÍ: ¡Tu propio banco de preguntas!
   // Aquí están todas las preguntas del juego.
   // "q": Es la pregunta.
   // "opts": Son las 4 respuestas posibles (Opciones 0, 1, 2, 3).
@@ -63,7 +63,7 @@
     turn = 1; // Empieza el jugador 1
     currentQIdx = 0;
     
-    // 🎲 ZONA DE HACKEO: Cantidad de preguntas
+    // 📌 EDITAR AQUÍ: Cantidad de preguntas
     // Barajamos y sacamos solo 10 preguntas. ¿Quieres un juego más largo? Cambia ese 10.
     questions = shuffle(DB).slice(0, 10); 
 

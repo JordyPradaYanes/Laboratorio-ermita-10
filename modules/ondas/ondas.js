@@ -46,10 +46,14 @@
     ctx.clearRect(0, 0, W, H); // Borramos el dibujo anterior
 
     // 📏 Dibujamos una cuadrícula suave en el fondo para medir las olas
-    ctx.strokeStyle = 'rgba(120,130,200,0.07)';
+    // Obtenemos el color de la cuadrícula desde el sistema de diseño (Canvas no puede leer var() CSS)
+    const gridColor = getComputedStyle(document.body).getPropertyValue('--clr-border').trim() || 'rgba(120,130,200,0.15)';
+    ctx.strokeStyle = gridColor;
     ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.15;
     for (let y = 0; y < H; y += 40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
     for (let x = 0; x < W; x += 80) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+    ctx.globalAlpha = 1;
 
     // ➖ Dibujamos la línea del medio (el punto de equilibrio)
     ctx.strokeStyle = 'rgba(120,130,200,0.25)';
@@ -58,12 +62,14 @@
     ctx.setLineDash([]); // Volvemos a la línea normal
 
     // 🌈 ZONA DE HACKEO: ¡Colores de la ola!
-    // Aquí pintamos la ola con un degradado. 
-    // ¿Qué pasa si cambias el '#00d4aa' (verde) por '#ff0000' (rojo)?
+    // Obtenemos los colores del sistema
+    const colorPrim = getComputedStyle(document.body).getPropertyValue('--clr-primary').trim() || '#6c63ff';
+    const colorAcc = getComputedStyle(document.body).getPropertyValue('--clr-accent').trim() || '#00d4aa';
+    
     const grad = ctx.createLinearGradient(0,0,W,0);
-    grad.addColorStop(0,'#6c63ff'); // Izquierda (morado)
-    grad.addColorStop(0.5,'#00d4aa'); // Medio (verde)
-    grad.addColorStop(1,'#6c63ff'); // Derecha (morado)
+    grad.addColorStop(0, colorPrim); // Izquierda
+    grad.addColorStop(0.5, colorAcc); // Medio
+    grad.addColorStop(1, colorPrim); // Derecha
 
     // 🌊 Empezamos a dibujar la línea principal de la ola
     ctx.beginPath();
@@ -85,7 +91,9 @@
     ctx.lineTo(W, cy); 
     ctx.lineTo(0, cy); 
     ctx.closePath();
-    ctx.fillStyle = 'rgba(108,99,255,0.07)'; 
+    
+    // Fallback: convertimos el color primario (si es hex) a rgba para transparencia
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--clr-primary-glow') || 'rgba(108,99,255,0.07)'; 
     ctx.fill();
 
     // Hacemos que la ola avance un poquito
@@ -166,11 +174,16 @@
         type = btn.dataset.wave; // Cambiamos la forma de la ola
       });
     });
+
+    start(); // 🚀 ¡Arrancamos la animación! (Sin esto la ola nunca se mueve)
   }
 
   // Controles del motor (arrancar y apagar)
   function start() { if (!raf) loop(); }
-  function stop()  { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+  function stop()  { 
+      if (raf) { cancelAnimationFrame(raf); raf = null; } 
+      window.removeEventListener('resize', resizeCanvas); // Evitar leak de memoria
+  }
 
   // Guardamos nuestro creador de olas en la mochila
   window.MODULES.ondas = { init, start, stop };
