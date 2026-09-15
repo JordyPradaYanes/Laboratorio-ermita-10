@@ -1,12 +1,84 @@
-/* ── Módulo Gravedad ──────────────────────────────────────────── */
-.gravity-container { display:grid; grid-template-columns:300px 1fr; gap:2rem; max-width:800px; margin:0 auto; }
+/* ── Módulo Gravedad ─────────────────────────────────────────────── */
 
-.gravity-panel { background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-xl); padding:1.5rem; display:flex; justify-content:center; align-items:center; }
-#gravityCanvas { width:100%; height:450px; background:linear-gradient(to bottom, var(--clr-surface2), var(--clr-surface3)); border-radius:var(--radius-lg); border:1px solid var(--clr-border); }
+/* Contenedor principal: panel de caída a la izquierda, controles a la derecha */
+.gravity-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-.gravity-controls { background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-xl); padding:2rem; }
+/* Panel que contiene el canal de caída */
+.gravity-panel {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ── Canal de caída (el "tubo" donde cae el objeto) ── */
+#canalCaida {
+  position: relative;       /* necesario para que el objeto se mueva con top/left */
+  width: 80px;
+  height: 400px;
+  background: linear-gradient(to bottom, var(--clr-surface2), var(--clr-surface3));
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* El objeto que cae — un círculo colorido */
+#objeto {
+  position: absolute;       /* le permite moverse con style.top */
+  top: 0px;                 /* empieza arriba del canal */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  box-shadow: 0 0 16px var(--clr-accent);
+  transition: none;
+}
+
+/* El suelo del canal */
+#suelo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--clr-primary);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Panel de controles */
+.gravity-controls {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+}
+
+/* Ocultar el panel de stats cuando tiene [hidden] */
 .gravity-stats[hidden] { display: none !important; }
-.env-btns { display:flex; flex-direction:column; gap:0.5rem; }
-.env-btns button { text-align:left; }
 
-@media(max-width:900px) { .gravity-container { grid-template-columns:1fr; } }
+/* Botones de planeta en columna */
+.env-btns { display: flex; flex-direction: column; gap: 0.5rem; }
+.env-btns button { text-align: left; }
+
+/* Botón de planeta activo */
+.active-mode {
+  background: var(--clr-primary) !important;
+  color: #fff !important;
+  border-color: var(--clr-primary) !important;
+}
+
+@media(max-width:900px) {
+  .gravity-container { grid-template-columns: 1fr; }
+  #canalCaida { width: 100%; }
+}

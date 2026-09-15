@@ -1,43 +1,53 @@
 <div class="module-header">
   <h2><i class="fa-solid fa-earth-americas"></i> Laboratorio de Gravedad</h2>
-  <p class="module-desc">Observa cómo cae un objeto simulado en diferentes entornos de gravedad (Tierra, Luna, Júpiter).</p>
+  <p class="module-desc">Observa cómo cae un objeto en diferentes entornos de gravedad. ¡Tú eliges el planeta!</p>
 </div>
 
 <div class="gravity-container">
-  <div class="gravity-panel">
-    <canvas id="gravityCanvas" width="400" height="500"></canvas>
-  </div>
-  
-  <div class="gravity-controls">
-    <div class="hud-card" style="margin-bottom:1.5rem">
-      <span class="hud-label">Altura (m)</span>
-      <span class="hud-val mono" id="gravHeightLabel">10.0</span>
-    </div>
 
+  <!-- ── Visualización: el canal de caída ── -->
+  <div class="gravity-panel">
+    <div id="canalCaida">
+      <div id="objeto" title="¡Soy el objeto que cae!"></div>
+      <div id="suelo"></div>
+    </div>
+  </div>
+
+  <!-- ── Controles del laboratorio ── -->
+  <div class="gravity-controls">
+
+    <!-- Botones de planeta -->
     <div class="input-group">
-      <label>Entorno Gravitatorio</label>
+      <label>Elige un planeta:</label>
       <div class="env-btns">
-        <button class="btn-secondary active-mode" data-g="9.8" id="gravEarth"><i class="fa-solid fa-earth-americas"></i> Tierra (9.8 m/s²)</button>
-        <button class="btn-secondary" data-g="3.71" id="gravMars"><i class="fa-solid fa-globe"></i> Marte (3.7 m/s²)</button>
-        <button class="btn-secondary" data-g="1.62" id="gravMoon"><i class="fa-solid fa-moon"></i> Luna (1.6 m/s²)</button>
-        <button class="btn-secondary" data-g="24.79" id="gravJupiter"><i class="fa-solid fa-meteor"></i> Júpiter (24.8 m/s²)</button>
-        <button class="btn-secondary" data-g="0.5" id="gravSpace"><i class="fa-solid fa-shuttle-space"></i> Microgravedad (0.5 m/s²)</button>
+        <button class="btn-secondary active-mode" id="btnTierra">
+          <i class="fa-solid fa-earth-americas"></i> Tierra (9.8 m/s²)
+        </button>
+        <button class="btn-secondary" id="btnLuna">
+          <i class="fa-solid fa-moon"></i> Luna (1.6 m/s²)
+        </button>
+        <button class="btn-secondary" id="btnJupiter">
+          <i class="fa-solid fa-meteor"></i> Júpiter (24.8 m/s²)
+        </button>
       </div>
     </div>
 
-    <div style="display:flex; gap:0.6rem; margin-top:1.2rem;">
+    <!-- Botones de acción -->
+    <div style="display:flex; gap:0.6rem; margin-top:1.5rem;">
       <button class="btn-primary" id="gravDropBtn" style="flex:1; justify-content:center; padding:0.9rem; font-size:1.05rem;">
-        <i class="fa-solid fa-arrow-down"></i> Soltar Objeto
+        <i class="fa-solid fa-arrow-down"></i> Soltar objeto
       </button>
-      <button class="btn-secondary" id="gravResetBtn" style="justify-content:center; padding:0.9rem 1.2rem;" title="Reiniciar posición">
+      <button class="btn-secondary" id="gravResetBtn" style="justify-content:center; padding:0.9rem 1.2rem;" title="Reiniciar">
         <i class="fa-solid fa-rotate-right"></i> Reiniciar
       </button>
     </div>
 
+    <!-- Resultados -->
     <div class="gravity-stats" id="gravStats" hidden style="margin-top:2rem; padding-top:2rem; border-top:1px solid var(--clr-border);">
-      <h3 style="font-size:1.2rem; margin-bottom:1rem; color:var(--clr-accent);">Resultados</h3>
-      <p>Tiempo de caída: <strong id="gravTime" class="mono" style="font-size:1.2rem;">0.00</strong> s</p>
-      <p>Velocidad final: <strong id="gravVel" class="mono" style="font-size:1.2rem;">0.00</strong> m/s</p>
+      <h3 style="font-size:1.1rem; margin-bottom:0.8rem; color:var(--clr-accent);">Resultados</h3>
+      <p>Planeta elegido: <strong id="gravPlaneta" class="mono" style="font-size:1.1rem;">—</strong></p>
+      <p>Tiempo de caída: <strong id="gravTime" class="mono" style="font-size:1.1rem;">0.00</strong> s</p>
     </div>
+
   </div>
 </div>

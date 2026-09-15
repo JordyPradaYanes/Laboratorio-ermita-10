@@ -1,214 +1,222 @@
-/* ── Módulo Química ─────────────────────────────────────────────── */
+/* ── Módulo Química (versión andamiada) ─────────────────────────── */
+
+/* Contenedor principal: columna de paneles */
 .chem-lab-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.chem-selectors {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2rem;
-    align-items: center;
+/* Título de sección dentro del módulo */
+.chem-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.chem-beaker-panel {
-    background: var(--clr-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-xl);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
+/* ── Panel de botones de elementos ── */
+.chem-elementos-panel {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: 1.8rem;
 }
 
-.chem-beaker-panel h4 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 0;
+.chem-elementos-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.75rem;
 }
 
-.chem-beaker {
-    width: 80px;
-    height: 100px;
-    border: 4px solid var(--clr-border);
-    border-top: none;
-    border-radius: 0 0 40px 40px;
-    position: relative;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.1);
+/* Botones de tabla periódica */
+.chem-elem-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  background: var(--clr-surface2);
+  border: 2px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--clr-text);
+  line-height: 1;
+  gap: 0.3rem;
 }
 
-.beaker-liquid {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0%; /* Default empty */
-    transition: height 0.5s ease-out, background-color 0.5s ease;
+.chem-elem-btn span {
+  font-family: var(--font-main);
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  text-align: center;
+  line-height: 1;
 }
 
-.chem-beaker.has-liquid .beaker-liquid {
-    height: 70%;
+.chem-elem-btn:hover {
+  border-color: var(--clr-accent);
+  background: var(--clr-surface3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,212,170,0.2);
+  color: var(--clr-accent);
 }
 
-.beaker-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-mono);
-    font-weight: 800;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-    z-index: 2;
+.chem-elem-btn:active {
+  transform: scale(0.95);
 }
 
-[data-theme="dark"] .beaker-label {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+/* ── Panel de combinación (zona de array visual) ── */
+.chem-combinacion-panel {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  padding: 1.8rem;
 }
 
-.chem-plus-symbol {
-    font-size: 2.5rem;
-    color: var(--clr-text-muted);
+/* La zona donde aparecen los tokens de elementos */
+.chem-combinacion-zona {
+  min-height: 80px;
+  border: 2px dashed var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  background: var(--clr-surface2);
+  transition: border-color var(--transition-fast);
 }
 
-.chem-btn-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    width: 100%;
+.chem-combinacion-zona:hover {
+  border-color: var(--clr-primary);
 }
 
-.chem-btn {
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.8rem;
-    background: var(--clr-surface2);
-    border: 2px solid var(--clr-border);
-    border-radius: var(--radius-md);
-    color: var(--clr-text);
-    cursor: pointer;
-    transition: var(--transition-fast);
+/* Texto de ayuda cuando la zona está vacía */
+.chem-placeholder {
+  color: var(--clr-text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
 }
 
-.chem-btn:hover {
-    border-color: var(--clr-primary);
-    transform: translateY(-2px);
+/* Token de elemento dentro de la zona */
+.chem-token {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--clr-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px var(--clr-primary-glow);
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
-.chem-btn.selected {
-    background: var(--clr-primary);
-    color: white;
-    border-color: var(--clr-primary);
-    box-shadow: 0 4px 10px var(--clr-primary-glow);
+.chem-token:hover {
+  background: #e74c3c;
+  box-shadow: 0 4px 12px rgba(231,76,60,0.35);
+  transform: scale(1.1);
 }
 
+/* Tooltip de eliminación */
+.chem-token:hover::after {
+  content: '✕';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  background: #e74c3c;
+  border-radius: 50%;
+  font-size: 0.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fila de botones de acción */
 .chem-action-row {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  gap: 0.8rem;
 }
 
-.btn-secondary {
-    background: transparent;
-    border: 2px solid var(--clr-text-muted);
-    color: var(--clr-text-muted);
-    font-family: var(--font-family);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 12px 28px;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+/* ── Panel de resultado ── */
+.chem-resultado {
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  animation: fadeInUp 0.4s ease;
+  border: 1px solid var(--clr-border);
 }
 
-.btn-secondary:hover {
-    border-color: var(--clr-text);
-    color: var(--clr-text);
+.chem-resultado.exito {
+  background: linear-gradient(135deg, rgba(0,212,170,0.08), var(--clr-surface));
+  border-color: var(--clr-accent);
 }
 
-.reaction-result, .no-reaction {
-    background: var(--clr-surface);
-    border: 1px solid var(--clr-border);
-    border-radius: var(--radius-xl);
-    padding: 2.5rem;
-    text-align: center;
-    animation: modalIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+.chem-resultado.fracaso {
+  background: linear-gradient(135deg, rgba(239,68,68,0.08), var(--clr-surface));
+  border-color: rgba(239,68,68,0.4);
 }
 
-.no-reaction i {
-    font-size: 3rem;
-    color: var(--clr-warning);
-    margin-bottom: 1rem;
+.chem-resultado-icono {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
-.reaction-equation {
-    font-family: var(--font-mono);
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--clr-text);
-    margin-bottom: 1.5rem;
-    background: var(--clr-surface2);
-    padding: 1rem;
-    border-radius: var(--radius-md);
-    border: 1px dashed var(--clr-primary);
+.chem-resultado-texto {
+  flex: 1;
 }
 
-.reaction-meta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+.chem-resultado-nombre {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--clr-text);
+  margin: 0 0 0.3rem 0;
 }
 
-.reaction-type-badge {
-    background: var(--clr-accent);
-    color: #134e4a; /* Dark text for contrast against teal */
-    font-weight: 700;
-    font-size: 0.9rem;
-    padding: 0.4rem 1rem;
-    border-radius: var(--radius-full);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+.chem-resultado-formula {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin: 0 0 0.5rem 0;
 }
 
-.reaction-product {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--clr-primary);
+.chem-resultado-desc {
+  color: var(--clr-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.reaction-description {
-    color: var(--clr-text-muted);
-    line-height: 1.6;
-    font-size: 1.05rem;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@media(max-width:768px) {
-    .chem-selectors {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    .chem-plus-symbol {
-        transform: rotate(90deg);
-    }
-    .reaction-equation {
-        font-size: 1.5rem;
-    }
-    .reaction-meta {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
+@media(max-width: 768px) {
+  .chem-elementos-grid { grid-template-columns: repeat(3, 1fr); }
+  .chem-resultado { flex-direction: column; }
 }

@@ -1,182 +1,242 @@
 /**
- * quimica.js — Laboratorio de Reacciones
- * ¡Bienvenido al laboratorio virtual! 🧪
- * Combina reactivos para descubrir qué pasa.
+ * quimica.js — Simulador de Química (versión andamiada)
+ * ¡Combina elementos para formar moléculas! 🧪
+ *
+ * ════════════════════════════════════════════════════════════════════
+ *  📖 PARA EL PROFESOR — Resumen del motor (léelo antes de clase)
+ * ════════════════════════════════════════════════════════════════════
+ *
+ *  Este archivo tiene DOS partes:
+ *
+ *  PARTE 1 — MOTOR (ya hecho, no tocar):
+ *    • MOLECULAS_VALIDAS: una lista (array) de objetos. Cada objeto
+ *      tiene un array "elementos" con los átomos ordenados
+ *      alfabéticamente (ej: ["H","H","O"]), más el nombre, fórmula
+ *      y descripción de la molécula.
+ *    • verificarMolecula(): toma el array del estudiante
+ *      (elementosSeleccionados), lo ordena alfabéticamente y lo
+ *      compara contra cada molécula válida.
+ *      Si hay coincidencia, llama a mostrarExito(). Si no, llama
+ *      a mostrarFracaso().
+ *    • mostrarExito(molecula): muestra el nombre, fórmula y
+ *      descripción de la molécula encontrada en el HTML.
+ *    • mostrarFracaso(): muestra un mensaje de "combinación inválida".
+ *    • actualizarZonaVisual(): redibuja los tokens de elementos en la
+ *      zona de combinación del HTML.
+ *    • limpiar(): vacía elementosSeleccionados y actualiza la vista.
+ *
+ *  PARTE 2 — LO QUE PROGRAMA EL ESTUDIANTE:
+ *    • El array elementosSeleccionados = []
+ *    • Los event listeners de los 6 botones de elemento (agregan al array)
+ *    • El event listener del botón "Formar Molécula" (llama verificarMolecula)
+ *    • El event listener del botón "Limpiar" (llama limpiar)
+ *
+ * ════════════════════════════════════════════════════════════════════
  */
 (function () {
-    'use strict';
+  'use strict';
 
-    // 🧪 ZONA DE HACKEO: Reactivos disponibles
-    // // 📌 EDITAR AQUÍ: Agrega nuevos reactivos o cambia sus colores
-    const REACTIVOS = [
-        { id: 'Na', nombre: 'Sodio', color: '#e2e8f0', symbol: 'Na' },
-        { id: 'Cl2', nombre: 'Cloro', color: '#bbf7d0', symbol: 'Cl₂' },
-        { id: 'H2', nombre: 'Hidrógeno', color: '#fef08a', symbol: 'H₂' },
-        { id: 'O2', nombre: 'Oxígeno', color: '#bfdbfe', symbol: 'O₂' },
-        { id: 'HCl', nombre: 'Ácido Clorhídrico', color: '#fca5a5', symbol: 'HCl' },
-        { id: 'NaOH', nombre: 'Hidróxido de Sodio', color: '#d9f99d', symbol: 'NaOH' },
-    ];
+  // ══════════════════════════════════════════════════════════════════
+  //  CÓDIGO YA HECHO — No lo modifiques
+  // ══════════════════════════════════════════════════════════════════
 
-    // 💥 ZONA DE HACKEO: Base de datos de reacciones
-    // // 📌 EDITAR AQUÍ: Define cómo reaccionan las sustancias entre sí.
-    // El orden de r1 y r2 no importa, el código busca la combinación en cualquier orden.
-    const REACCIONES = [
-        {
-            r1: 'Na', r2: 'Cl2',
-            eq: '2Na + Cl₂ ➔ 2NaCl',
-            type: 'Síntesis',
-            product: 'Cloruro de Sodio (Sal de mesa)',
-            desc: 'Una reacción muy exotérmica. El sodio metálico reacciona violentamente con el gas cloro para formar sal de mesa común.'
-        },
-        {
-            r1: 'H2', r2: 'O2',
-            eq: '2H₂ + O₂ ➔ 2H₂O',
-            type: 'Síntesis / Combustión',
-            product: 'Agua',
-            desc: '¡BOOM! El hidrógeno gaseoso es altamente inflamable y al reaccionar con oxígeno produce una explosión, formando vapor de agua.'
-        },
-        {
-            r1: 'HCl', r2: 'NaOH',
-            eq: 'HCl + NaOH ➔ NaCl + H₂O',
-            type: 'Neutralización',
-            product: 'Sal y Agua',
-            desc: 'Un ácido fuerte (HCl) se mezcla con una base fuerte (NaOH). Se neutralizan entre sí formando agua inofensiva y sal.'
-        },
-        // Añade tus propias reacciones químicas aquí
-    ];
+  /**
+   * Lista de moléculas válidas.
+   * Cada molécula tiene sus elementos ORDENADOS ALFABÉTICAMENTE.
+   * La función verificarMolecula() también ordenará el array del estudiante
+   * antes de comparar, así "H, O, H" y "H, H, O" son la misma combinación.
+   */
+  const MOLECULAS_VALIDAS = [
+    {
+      elementos: ['H', 'H', 'O'],          // H₂O — ordenados: H, H, O
+      nombre:    'Agua',
+      formula:   'H₂O',
+      desc:      '¡El líquido más importante de la vida! Dos átomos de hidrógeno y uno de oxígeno.'
+    },
+    {
+      elementos: ['C', 'O', 'O'],          // CO₂ — ordenados: C, O, O
+      nombre:    'Dióxido de Carbono',
+      formula:   'CO₂',
+      desc:      'El gas que exhalamos al respirar. También lo usan las plantas para hacer fotosíntesis.'
+    },
+    {
+      elementos: ['Cl', 'Na'],             // NaCl — ordenados: Cl, Na
+      nombre:    'Cloruro de Sodio (Sal de mesa)',
+      formula:   'NaCl',
+      desc:      '¡La sal que pones en la comida! Se forma cuando el sodio y el cloro reaccionan.'
+    },
+    {
+      elementos: ['H', 'H', 'H', 'N'],    // NH₃ — ordenados: H, H, H, N
+      nombre:    'Amoníaco',
+      formula:   'NH₃',
+      desc:      'Un gas con olor fuerte. Se usa para hacer fertilizantes y productos de limpieza.'
+    },
+    {
+      elementos: ['H', 'H'],              // H₂ — ordenados: H, H
+      nombre:    'Hidrógeno Molecular',
+      formula:   'H₂',
+      desc:      'El elemento más ligero del universo. Se usa como combustible de cohetes espaciales.'
+    },
+    {
+      elementos: ['O', 'O'],              // O₂ — ordenados: O, O
+      nombre:    'Oxígeno Molecular',
+      formula:   'O₂',
+      desc:      'El gas que respiramos. Representa el 21% del aire que nos rodea.'
+    },
+  ];
 
-    // Estado del módulo
-    let sel1 = null;
-    let sel2 = null;
+  // Referencias a elementos del HTML (el motor las necesita)
+  const zonaVisual  = document.getElementById('zonaCombinacion');
+  const placeholder = document.getElementById('placeholderTexto');
+  const panelResult = document.getElementById('resultado');
+  const resultIcono = document.getElementById('resultadoIcono');
+  const resultNombre= document.getElementById('resultadoNombre');
+  const resultForm  = document.getElementById('resultadoFormula');
+  const resultDesc  = document.getElementById('resultadoDesc');
 
-    // Referencias al DOM
-    let $grid1, $grid2, $mixBtn, $resetBtn;
-    let $beakerLiq1, $beakerLbl1, $beaker1;
-    let $beakerLiq2, $beakerLbl2, $beaker2;
-    let $resultPanel, $noReactionPanel;
+  /**
+   * actualizarZonaVisual()
+   * Redibuja los tokens de elementos en la zona visual del HTML.
+   * Lee el array elementosSeleccionados para saber qué mostrar.
+   * Esta función se llama automáticamente después de cada cambio.
+   */
+  function actualizarZonaVisual() {
+    // Primero borramos el contenido actual de la zona
+    zonaVisual.innerHTML = '';
 
-    function renderButtons() {
-        $grid1.innerHTML = '';
-        $grid2.innerHTML = '';
-
-        REACTIVOS.forEach(r => {
-            // Botones para el reactivo 1
-            const btn1 = document.createElement('button');
-            btn1.className = 'chem-btn';
-            btn1.textContent = r.symbol;
-            btn1.title = r.nombre;
-            btn1.addEventListener('click', () => selectReactive(1, r, btn1));
-            $grid1.appendChild(btn1);
-
-            // Botones para el reactivo 2
-            const btn2 = document.createElement('button');
-            btn2.className = 'chem-btn';
-            btn2.textContent = r.symbol;
-            btn2.title = r.nombre;
-            btn2.addEventListener('click', () => selectReactive(2, r, btn2));
-            $grid2.appendChild(btn2);
+    if (elementosSeleccionados.length === 0) {
+      // Si el array está vacío, mostramos el texto de ayuda
+      const span = document.createElement('span');
+      span.className = 'chem-placeholder';
+      span.id = 'placeholderTexto';
+      span.textContent = 'Agrega elementos haciendo clic arriba ↑';
+      zonaVisual.appendChild(span);
+    } else {
+      // Si hay elementos, creamos un token visual por cada uno
+      elementosSeleccionados.forEach(function (elem, indice) {
+        const token = document.createElement('div');
+        token.className = 'chem-token';
+        token.textContent = elem;
+        // Al hacer clic en un token, se elimina del array
+        token.addEventListener('click', function () {
+          elementosSeleccionados.splice(indice, 1);
+          actualizarZonaVisual();
+          panelResult.hidden = true; // Ocultamos resultado si cambian
         });
+        zonaVisual.appendChild(token);
+      });
     }
+  }
 
-    function selectReactive(beakerNum, reactive, btnEl) {
-        // Deseleccionar botones previos en esa cuadrícula
-        const grid = beakerNum === 1 ? $grid1 : $grid2;
-        grid.querySelectorAll('.chem-btn').forEach(b => b.classList.remove('selected'));
-        btnEl.classList.add('selected');
+  /**
+   * verificarMolecula()
+   * Compara el array del estudiante con la lista de moléculas válidas.
+   * Ordena ambos arrays alfabéticamente antes de comparar,
+   * así el orden en que el estudiante agregó los elementos no importa.
+   */
+  function verificarMolecula() {
+    if (elementosSeleccionados.length === 0) return; // Nada que verificar
 
-        // Actualizar el vaso de precipitados
-        const liq = beakerNum === 1 ? $beakerLiq1 : $beakerLiq2;
-        const lbl = beakerNum === 1 ? $beakerLbl1 : $beakerLbl2;
-        const beaker = beakerNum === 1 ? $beaker1 : $beaker2;
+    // Ordenamos el array del estudiante alfabéticamente (copia para no modificar el original)
+    const intento = elementosSeleccionados.slice().sort();
 
-        liq.style.backgroundColor = reactive.color;
-        lbl.textContent = reactive.symbol;
-        beaker.classList.add('has-liquid');
+    // Buscamos si hay alguna molécula cuyo array de elementos coincida
+    const encontrada = MOLECULAS_VALIDAS.find(function (mol) {
+      // La molécula ya está ordenada, así que comparamos directamente
+      if (mol.elementos.length !== intento.length) return false;
+      return mol.elementos.every(function (elem, i) {
+        return elem === intento[i];
+      });
+    });
 
-        // Guardar selección
-        if (beakerNum === 1) sel1 = reactive.id;
-        if (beakerNum === 2) sel2 = reactive.id;
-
-        // Habilitar botón de mezclar si ambos están seleccionados
-        if (sel1 && sel2) {
-            $mixBtn.disabled = false;
-        }
-
-        // Ocultar resultados previos si cambian la selección
-        hideResults();
+    if (encontrada) {
+      mostrarExito(encontrada);
+    } else {
+      mostrarFracaso();
     }
+  }
 
-    function mix() {
-        if (!sel1 || !sel2) return;
+  /**
+   * mostrarExito(molecula)
+   * Muestra el resultado cuando la combinación es válida.
+   */
+  function mostrarExito(molecula) {
+    resultIcono.textContent  = '✅';
+    resultNombre.textContent = '¡Molécula válida! ' + molecula.nombre;
+    resultForm.textContent   = 'Fórmula: ' + molecula.formula;
+    resultDesc.textContent   = molecula.desc;
+    panelResult.className    = 'chem-resultado exito';
+    panelResult.hidden       = false;
+  }
 
-        // Buscar reacción (en cualquier orden)
-        const reaction = REACCIONES.find(r => 
-            (r.r1 === sel1 && r.r2 === sel2) || (r.r1 === sel2 && r.r2 === sel1)
-        );
+  /**
+   * mostrarFracaso()
+   * Muestra el resultado cuando la combinación no es una molécula conocida.
+   */
+  function mostrarFracaso() {
+    resultIcono.textContent  = '❌';
+    resultNombre.textContent = 'Combinación inválida';
+    resultForm.textContent   = 'Esa combinación de elementos no forma una molécula de nuestra lista.';
+    resultDesc.textContent   = '¡Sigue intentando! Prueba con H+H+O o Na+Cl.';
+    panelResult.className    = 'chem-resultado fracaso';
+    panelResult.hidden       = false;
+  }
 
-        hideResults();
-        $resetBtn.style.display = 'inline-flex';
-        $mixBtn.style.display = 'none';
+  /**
+   * limpiar()
+   * Vacía el array de elementos y resetea la vista.
+   */
+  function limpiar() {
+    elementosSeleccionados.length = 0; // Vaciamos el array sin reemplazarlo
+    actualizarZonaVisual();
+    panelResult.hidden = true;
+  }
 
-        if (reaction) {
-            document.getElementById('reactionEquation').textContent = reaction.eq;
-            document.getElementById('reactionTypeBadge').textContent = reaction.type;
-            document.getElementById('reactionProduct').textContent = reaction.product;
-            document.getElementById('reactionDescription').textContent = reaction.desc;
-            $resultPanel.hidden = false;
-        } else {
-            $noReactionPanel.hidden = false;
-        }
-    }
+  // ══════════════════════════════════════════════════════════════════
+  //  TU CÓDIGO AQUÍ — Completa las secciones marcadas con TODO
+  // ══════════════════════════════════════════════════════════════════
 
-    function hideResults() {
-        if($resultPanel) $resultPanel.hidden = true;
-        if($noReactionPanel) $noReactionPanel.hidden = true;
-    }
+  // ──────────────────────────────────────────────────────────────────
+  // TODO 1: Declara el array donde guardarás los elementos elegidos.
+  // Un array vacío se escribe así: let miArray = [];
+  // Nómbralo exactamente: elementosSeleccionados
+  // (Las funciones del motor ya usan ese nombre exacto)
+  // ──────────────────────────────────────────────────────────────────
 
-    function reset() {
-        sel1 = null;
-        sel2 = null;
-        
-        $beaker1.classList.remove('has-liquid');
-        $beaker2.classList.remove('has-liquid');
-        $beakerLbl1.textContent = '?';
-        $beakerLbl2.textContent = '?';
-        
-        $grid1.querySelectorAll('.chem-btn').forEach(b => b.classList.remove('selected'));
-        $grid2.querySelectorAll('.chem-btn').forEach(b => b.classList.remove('selected'));
 
-        $mixBtn.disabled = true;
-        $mixBtn.style.display = 'inline-flex';
-        $resetBtn.style.display = 'none';
-        hideResults();
-    }
+  function init() {
+    if (!zonaVisual) return; // Seguridad: verificar que el HTML cargó
 
-    function init() {
-        $grid1 = document.getElementById('reactiveButtons1');
-        $grid2 = document.getElementById('reactiveButtons2');
-        $mixBtn = document.getElementById('mixBtn');
-        $resetBtn = document.getElementById('resetBtn');
-        
-        $beakerLiq1 = document.getElementById('beakerLiquid1');
-        $beakerLbl1 = document.getElementById('beakerLabel1');
-        $beaker1 = document.getElementById('beaker1');
-        
-        $beakerLiq2 = document.getElementById('beakerLiquid2');
-        $beakerLbl2 = document.getElementById('beakerLabel2');
-        $beaker2 = document.getElementById('beaker2');
+    actualizarZonaVisual(); // Mostramos la zona vacía al iniciar
 
-        $resultPanel = document.getElementById('reactionResult');
-        $noReactionPanel = document.getElementById('noReaction');
+    // ──────────────────────────────────────────────────────────────
+    // TODO 2: Event listeners de los botones de ELEMENTOS
+    // Hay 6 botones con la clase 'chem-elem-btn' (H, O, C, N, Na, Cl).
+    // Selecciónalos todos con: document.querySelectorAll('.chem-elem-btn')
+    // Para CADA botón (usa .forEach):
+    //   a) Agrega un addEventListener de tipo 'click'
+    //   b) Dentro, lee el elemento del botón con: btn.dataset.elemento
+    //      (eso te dará el string 'H', 'O', 'C', etc.)
+    //   c) Agrégalo al array con: elementosSeleccionados.push(elemento)
+    //   d) Llama a actualizarZonaVisual() para que se muestre en pantalla
+    //   e) Oculta el resultado anterior: panelResult.hidden = true
+    // ──────────────────────────────────────────────────────────────
 
-        if (!$grid1) return; // Salvaguarda si el HTML no cargó
 
-        renderButtons();
-        
-        $mixBtn.addEventListener('click', mix);
-        $resetBtn.addEventListener('click', reset);
-    }
+    // ──────────────────────────────────────────────────────────────
+    // TODO 3: Event listener del botón "Formar Molécula" (id: "btnFormar")
+    // Cuando se haga clic, llama a la función verificarMolecula().
+    // Pista: document.getElementById('btnFormar').addEventListener('click', ...)
+    // ──────────────────────────────────────────────────────────────
 
-    // Registrar módulo
-    window.MODULES.quimica = { init };
+
+    // ──────────────────────────────────────────────────────────────
+    // TODO 4: Event listener del botón "Limpiar" (id: "btnLimpiar")
+    // Cuando se haga clic, llama a la función limpiar().
+    // ──────────────────────────────────────────────────────────────
+
+  }
+
+  // Registramos el módulo en la aplicación
+  window.MODULES.quimica = { init };
 })();

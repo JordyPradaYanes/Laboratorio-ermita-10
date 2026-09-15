@@ -1,75 +1,55 @@
 <!-- =====================================================================
-     MÓDULO: Laboratorio de Reacciones Químicas
-     Descripción: Simulador de reacciones. El estudiante elige dos reactivos
-     y observa el producto, la ecuación balanceada y el tipo de reacción.
+     MÓDULO: Simulador de Química (versión andamiada para estudiantes)
+     Descripción: Los estudiantes agregan elementos a un array y
+     comprueban si forman una molécula válida.
      ====================================================================== -->
 
 <div class="module-header">
-  <h2><i class="fa-solid fa-flask"></i> Laboratorio de Reacciones Químicas</h2>
+  <h2><i class="fa-solid fa-flask"></i> Simulador de Química</h2>
   <p class="module-desc">
-    Selecciona dos reactivos y mezclalos para descubrir el producto, la ecuación balanceada y el tipo de reacción.
+    Haz clic en los elementos para agregarlos a tu combinación. Cuando termines, presiona <strong>Formar Molécula</strong> para ver si es válida.
   </p>
 </div>
 
 <div class="chem-lab-container">
 
-  <!-- ── Panel de selección de reactivos ── -->
-  <div class="chem-selectors">
-
-    <div class="chem-beaker-panel">
-      <div class="chem-beaker" id="beaker1">
-        <div class="beaker-liquid" id="beakerLiquid1"></div>
-        <span class="beaker-label" id="beakerLabel1">?</span>
-      </div>
-      <h4>Reactivo 1</h4>
-      <!-- 📌 EDITAR AQUÍ: Agrega nuevos botones copiando el formato del HTML generado por JS -->
-      <div class="chem-btn-grid" id="reactiveButtons1" role="group" aria-label="Selección de reactivo 1">
-        <!-- Generado por JS -->
-      </div>
+  <!-- ── Panel de botones de elementos ── -->
+  <div class="chem-elementos-panel">
+    <h4 class="chem-section-title"><i class="fa-solid fa-atom"></i> Elementos disponibles</h4>
+    <div class="chem-elementos-grid">
+      <button class="chem-elem-btn" id="btnH"  data-elemento="H">H<span>Hidrógeno</span></button>
+      <button class="chem-elem-btn" id="btnO"  data-elemento="O">O<span>Oxígeno</span></button>
+      <button class="chem-elem-btn" id="btnC"  data-elemento="C">C<span>Carbono</span></button>
+      <button class="chem-elem-btn" id="btnN"  data-elemento="N">N<span>Nitrógeno</span></button>
+      <button class="chem-elem-btn" id="btnNa" data-elemento="Na">Na<span>Sodio</span></button>
+      <button class="chem-elem-btn" id="btnCl" data-elemento="Cl">Cl<span>Cloro</span></button>
     </div>
-
-    <div class="chem-plus-symbol">
-      <i class="fa-solid fa-plus"></i>
-    </div>
-
-    <div class="chem-beaker-panel">
-      <div class="chem-beaker" id="beaker2">
-        <div class="beaker-liquid" id="beakerLiquid2"></div>
-        <span class="beaker-label" id="beakerLabel2">?</span>
-      </div>
-      <h4>Reactivo 2</h4>
-      <div class="chem-btn-grid" id="reactiveButtons2" role="group" aria-label="Selección de reactivo 2">
-        <!-- Generado por JS -->
-      </div>
-    </div>
-
   </div>
 
-  <!-- ── Botón de mezcla ── -->
-  <div class="chem-action-row">
-    <button class="btn-primary" id="mixBtn" disabled>
-      <i class="fa-solid fa-burst"></i> ¡Mezclar!
-    </button>
-    <button class="btn-secondary" id="resetBtn" style="display:none;">
-      <i class="fa-solid fa-rotate-right"></i> Reiniciar
-    </button>
-  </div>
-
-  <!-- ── Panel de resultado de la reacción ── -->
-  <div class="reaction-result" id="reactionResult" hidden>
-    <div class="reaction-equation" id="reactionEquation"></div>
-    <div class="reaction-meta">
-      <div class="reaction-type-badge" id="reactionTypeBadge"></div>
-      <div class="reaction-product" id="reactionProduct"></div>
+  <!-- ── Zona de combinación (el array visual) ── -->
+  <div class="chem-combinacion-panel">
+    <h4 class="chem-section-title"><i class="fa-solid fa-vials"></i> Tu combinación</h4>
+    <div class="chem-combinacion-zona" id="zonaCombinacion">
+      <span class="chem-placeholder" id="placeholderTexto">Agrega elementos haciendo clic arriba ↑</span>
     </div>
-    <p class="reaction-description" id="reactionDescription"></p>
+    <div class="chem-action-row">
+      <button class="btn-primary" id="btnFormar">
+        <i class="fa-solid fa-burst"></i> Formar Molécula
+      </button>
+      <button class="btn-secondary" id="btnLimpiar">
+        <i class="fa-solid fa-trash"></i> Limpiar
+      </button>
+    </div>
   </div>
 
-  <!-- ── Mensaje cuando no hay reacción conocida ── -->
-  <div class="no-reaction" id="noReaction" hidden>
-    <i class="fa-solid fa-triangle-exclamation"></i>
-    <p>No se conoce una reacción simple entre estos dos reactivos. <br>
-    <strong>¡Intenta otra combinación!</strong></p>
+  <!-- ── Resultado de la verificación ── -->
+  <div class="chem-resultado" id="resultado" hidden>
+    <div class="chem-resultado-icono" id="resultadoIcono"></div>
+    <div class="chem-resultado-texto">
+      <p class="chem-resultado-nombre" id="resultadoNombre"></p>
+      <p class="chem-resultado-formula" id="resultadoFormula"></p>
+      <p class="chem-resultado-desc" id="resultadoDesc"></p>
+    </div>
   </div>
 
 </div>
