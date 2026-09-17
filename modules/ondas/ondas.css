@@ -1,14 +1,14 @@
 /* ── Módulo Ondas ─────────────────────────────────────────────── */
-.wave-container { display:flex; flex-direction:column; gap:1.5rem; }
+.contenedor-onda { display:flex; flex-direction:column; gap:1.5rem; }
 
-.wave-canvas {
+.lienzo-onda {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
   width: 100%; height: 300px; display:block;
 }
 
-.wave-controls {
+.controles-onda {
   display: grid;
   grid-template-columns: repeat(3,1fr) auto;
   gap: 1.5rem;
@@ -18,19 +18,19 @@
   padding: 1.5rem;
   align-items: start;
 }
-.control-group label { font-size:0.88rem; font-weight:600; color:var(--clr-text-muted); display:block; margin-bottom:0.5rem; }
+.grupo-control label { font-size:0.88rem; font-weight:600; color:var(--clr-text-muted); display:block; margin-bottom:0.5rem; }
 
-.wave-type-btns { display:flex; flex-direction:column; gap:0.5rem; align-self:center; }
-.wave-type-btn  { font-family:var(--font-main); font-size:0.82rem; font-weight:600; padding:0.45rem 0.8rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border); background:var(--clr-surface2); color:var(--clr-text-muted); cursor:pointer; transition:all var(--transition-fast); }
-.wave-type-btn.active,.wave-type-btn:hover { background:var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
+.botones-tipo-onda { display:flex; flex-direction:column; gap:0.5rem; align-self:center; }
+.boton-tipo-onda  { font-family:var(--font-main); font-size:0.82rem; font-weight:600; padding:0.45rem 0.8rem; border-radius:var(--radius-sm); border:1px solid var(--clr-border); background:var(--clr-surface2); color:var(--clr-text-muted); cursor:pointer; transition:all var(--transition-fast); }
+.boton-tipo-onda.activo,.boton-tipo-onda:hover { background:var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
 
-.wave-info { display:flex; gap:1rem; }
-.info-card { flex:1; background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-md); padding:1rem; text-align:center; }
-.info-label { font-size:0.78rem; color:var(--clr-text-muted); display:block; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem; }
-.info-val   { font-size:1.2rem; font-weight:700; color:var(--clr-primary); }
+.informacion-onda { display:flex; gap:1rem; }
+.tarjeta-info { flex:1; background:var(--clr-surface); border:1px solid var(--clr-border); border-radius:var(--radius-md); padding:1rem; text-align:center; }
+.etiqueta-info { font-size:0.78rem; color:var(--clr-text-muted); display:block; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem; }
+.valor-info   { font-size:1.2rem; font-weight:700; color:var(--clr-primary); }
 
 @media(max-width:900px) {
-  .wave-controls { grid-template-columns:1fr 1fr; }
-  .wave-type-btns { flex-direction:row; grid-column:1/-1; }
-  .wave-info { flex-wrap:wrap; }
+  .controles-onda { grid-template-columns:1fr 1fr; }
+  .botones-tipo-onda { flex-direction:row; grid-column:1/-1; }
+  .informacion-onda { flex-wrap:wrap; }
 }

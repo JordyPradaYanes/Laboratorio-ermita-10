@@ -4,51 +4,51 @@
      comprueban si forman una molécula válida.
      ====================================================================== -->
 
-<div class="module-header">
+<div class="encabezado-modulo">
   <h2><i class="fa-solid fa-flask"></i> Simulador de Química</h2>
-  <p class="module-desc">
+  <p class="descripcion-modulo">
     Haz clic en los elementos para agregarlos a tu combinación. Cuando termines, presiona <strong>Formar Molécula</strong> para ver si es válida.
   </p>
 </div>
 
-<div class="chem-lab-container">
+<div class="contenedor-laboratorio-quimica">
 
   <!-- ── Panel de botones de elementos ── -->
-  <div class="chem-elementos-panel">
-    <h4 class="chem-section-title"><i class="fa-solid fa-atom"></i> Elementos disponibles</h4>
-    <div class="chem-elementos-grid">
-      <button class="chem-elem-btn" id="btnH"  data-elemento="H">H<span>Hidrógeno</span></button>
-      <button class="chem-elem-btn" id="btnO"  data-elemento="O">O<span>Oxígeno</span></button>
-      <button class="chem-elem-btn" id="btnC"  data-elemento="C">C<span>Carbono</span></button>
-      <button class="chem-elem-btn" id="btnN"  data-elemento="N">N<span>Nitrógeno</span></button>
-      <button class="chem-elem-btn" id="btnNa" data-elemento="Na">Na<span>Sodio</span></button>
-      <button class="chem-elem-btn" id="btnCl" data-elemento="Cl">Cl<span>Cloro</span></button>
+  <div class="panel-elementos-quimica">
+    <h4 class="titulo-seccion-quimica"><i class="fa-solid fa-atom"></i> Elementos disponibles</h4>
+    <div class="grid-elementos-quimica">
+      <button class="btn-elem-quimica" id="btnH"  data-elemento="H">H<span>Hidrógeno</span></button>
+      <button class="btn-elem-quimica" id="btnO"  data-elemento="O">O<span>Oxígeno</span></button>
+      <button class="btn-elem-quimica" id="btnC"  data-elemento="C">C<span>Carbono</span></button>
+      <button class="btn-elem-quimica" id="btnN"  data-elemento="N">N<span>Nitrógeno</span></button>
+      <button class="btn-elem-quimica" id="btnNa" data-elemento="Na">Na<span>Sodio</span></button>
+      <button class="btn-elem-quimica" id="btnCl" data-elemento="Cl">Cl<span>Cloro</span></button>
     </div>
   </div>
 
   <!-- ── Zona de combinación (el array visual) ── -->
-  <div class="chem-combinacion-panel">
-    <h4 class="chem-section-title"><i class="fa-solid fa-vials"></i> Tu combinación</h4>
-    <div class="chem-combinacion-zona" id="zonaCombinacion">
-      <span class="chem-placeholder" id="placeholderTexto">Agrega elementos haciendo clic arriba ↑</span>
+  <div class="panel-combinacion-quimica">
+    <h4 class="titulo-seccion-quimica"><i class="fa-solid fa-vials"></i> Tu combinación</h4>
+    <div class="zona-combinacion-quimica" id="zonaCombinacion">
+      <span class="placeholder-quimica" id="placeholderTexto">Agrega elementos haciendo clic arriba ↑</span>
     </div>
-    <div class="chem-action-row">
-      <button class="btn-primary" id="btnFormar">
+    <div class="fila-accion-quimica">
+      <button class="btn-primario" id="btnFormar">
         <i class="fa-solid fa-burst"></i> Formar Molécula
       </button>
-      <button class="btn-secondary" id="btnLimpiar">
+      <button class="btn-secundario" id="btnLimpiar">
         <i class="fa-solid fa-trash"></i> Limpiar
       </button>
     </div>
   </div>
 
   <!-- ── Resultado de la verificación ── -->
-  <div class="chem-resultado" id="resultado" hidden>
-    <div class="chem-resultado-icono" id="resultadoIcono"></div>
-    <div class="chem-resultado-texto">
-      <p class="chem-resultado-nombre" id="resultadoNombre"></p>
-      <p class="chem-resultado-formula" id="resultadoFormula"></p>
-      <p class="chem-resultado-desc" id="resultadoDesc"></p>
+  <div class="resultado-quimica" id="resultado" hidden>
+    <div class="icono-resultado-quimica" id="resultadoIcono"></div>
+    <div class="texto-resultado-quimica">
+      <p class="nombre-resultado-quimica" id="resultadoNombre"></p>
+      <p class="formula-resultado-quimica" id="resultadoFormula"></p>
+      <p class="desc-resultado-quimica" id="resultadoDesc"></p>
     </div>
   </div>
 

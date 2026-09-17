@@ -1,52 +1,53 @@
-<div class="module-header">
+<div class="encabezado-modulo">
   <h2><i class="fa-solid fa-wave-square"></i> Simulador de Ondas</h2>
-  <p class="module-desc">Ajusta la frecuencia y amplitud para visualizar distintos tipos de onda en tiempo real.</p>
+  <p class="descripcion-modulo">Ajusta la frecuencia y amplitud para visualizar distintos tipos de onda en tiempo real.</p>
 </div>
 
-<div class="wave-container">
-  <canvas class="wave-canvas" id="waveCanvas" width="800" height="300" aria-label="Visualización de onda"></canvas>
+<div class="contenedor-onda">
+  <canvas class="lienzo-onda" id="lienzo" width="800" height="300" aria-label="Visualización de onda"></canvas>
 
-  <div class="wave-controls">
-    <div class="control-group">
-      <label for="sliderFreq">
+  <div class="controles-onda">
+    <div class="grupo-control">
+      <label for="controlFrecuencia">
         <i class="fa-solid fa-arrows-left-right"></i>
-        Frecuencia: <span id="valFreq" class="mono">1.0</span> Hz
+        Frecuencia: <span id="valorFrecuencia" class="mono">1.0</span> Hz
       </label>
-      <input type="range" id="sliderFreq" min="0.1" max="5" step="0.1" value="1" class="slider" />
+      <input type="range" id="controlFrecuencia" min="0.1" max="5" step="0.1" value="1" class="control-deslizante" />
     </div>
-    <div class="control-group">
-      <label for="sliderAmp">
+    <div class="grupo-control">
+      <label for="controlAmplitud">
         <i class="fa-solid fa-arrows-up-down"></i>
-        Amplitud: <span id="valAmp" class="mono">80</span> px
+        Amplitud: <span id="valorAmplitud" class="mono">80</span> px
       </label>
-      <input type="range" id="sliderAmp" min="10" max="130" step="5" value="80" class="slider" />
+      <input type="range" id="controlAmplitud" min="10" max="130" step="5" value="80" class="control-deslizante" />
     </div>
-    <div class="control-group">
-      <label for="sliderSpeed">
+    <div class="grupo-control">
+      <label for="controlVelocidad">
         <i class="fa-solid fa-gauge-high"></i>
-        Velocidad: <span id="valSpeed" class="mono">1.0</span>x
+        Velocidad: <span id="valorVelocidad" class="mono">1.0</span>x
       </label>
-      <input type="range" id="sliderSpeed" min="0.1" max="3" step="0.1" value="1" class="slider" />
+      <input type="range" id="controlVelocidad" min="0.1" max="3" step="0.1" value="1" class="control-deslizante" />
     </div>
-    <div class="wave-type-btns">
-      <button class="wave-type-btn active" data-wave="sin">Senoidal</button>
-      <button class="wave-type-btn" data-wave="square">Cuadrada</button>
-      <button class="wave-type-btn" data-wave="triangle">Triangular</button>
+    <div class="botones-tipo-onda">
+      <button class="boton-tipo-onda activo" data-wave="sin">Senoidal</button>
+      <button class="boton-tipo-onda" data-wave="square">Cuadrada</button>
+      <button class="boton-tipo-onda" data-wave="triangle">Triangular</button>
     </div>
   </div>
 
-  <div class="wave-info">
-    <div class="info-card">
-      <span class="info-label"><i class="fa-solid fa-ruler-horizontal"></i> Longitud de onda</span>
-      <span class="info-val mono" id="waveLength">—</span>
+  <div class="informacion-onda">
+    <div class="tarjeta-info">
+      <span class="etiqueta-info"><i class="fa-solid fa-ruler-horizontal"></i> Longitud de onda</span>
+      <span class="valor-info mono" id="longitudOnda">—</span>
     </div>
-    <div class="info-card">
-      <span class="info-label"><i class="fa-solid fa-clock"></i> Período</span>
-      <span class="info-val mono" id="wavePeriod">—</span>
+    <div class="tarjeta-info">
+      <span class="etiqueta-info"><i class="fa-solid fa-clock"></i> Período</span>
+      <span class="valor-info mono" id="periodoOnda">—</span>
     </div>
-    <div class="info-card">
-      <span class="info-label"><i class="fa-solid fa-shapes"></i> Tipo</span>
-      <span class="info-val" id="waveTypeLabel">Senoidal</span>
+    <div class="tarjeta-info">
+      <span class="etiqueta-info"><i class="fa-solid fa-shapes"></i> Tipo</span>
+      <span class="valor-info" id="tipoOndaEtiqueta">Senoidal</span>
     </div>
   </div>
 </div>
+

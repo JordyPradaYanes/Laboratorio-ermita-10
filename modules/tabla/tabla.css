@@ -1,12 +1,12 @@
 /* ── Módulo Tabla Periódica ───────────────────────────────────── */
-.periodic-container { display:flex; flex-direction:column; gap:1.5rem; }
+.contenedor-tabla { display:flex; flex-direction:column; gap:1.5rem; }
 
-.periodic-filters { display:flex; flex-wrap:wrap; gap:0.5rem; }
-.filter-btn { font-family:var(--font-main); font-size:0.82rem; font-weight:600; padding:0.45rem 1rem; border-radius:99px; border:1px solid var(--clr-border); background:var(--clr-surface); color:var(--clr-text-muted); cursor:pointer; transition:all var(--transition-fast); }
-.filter-btn:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
-.filter-btn.active { background:var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
+.filtros-tabla { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.btn-filtro { font-family:var(--font-main); font-size:0.82rem; font-weight:600; padding:0.45rem 1rem; border-radius:99px; border:1px solid var(--clr-border); background:var(--clr-surface); color:var(--clr-text-muted); cursor:pointer; transition:all var(--transition-fast); }
+.btn-filtro:hover { border-color:var(--clr-primary); color:var(--clr-primary); }
+.btn-filtro.activo { background:var(--clr-primary); color:#fff; border-color:var(--clr-primary); }
 
-.periodic-table-wrap {
+.envoltura-tabla {
   overflow-x: auto;
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -14,7 +14,7 @@
   padding: 1.2rem;
 }
 
-.periodic-table {
+.tabla-periodica {
   display: grid;
   grid-template-columns: repeat(18, minmax(44px, 1fr));
   grid-auto-rows: minmax(54px, auto);
@@ -22,7 +22,7 @@
   min-width: 880px;
 }
 
-.element-cell {
+.celda-elemento {
   border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
@@ -34,19 +34,19 @@
   border: 1px solid transparent;
   user-select: none;
 }
-.element-cell:hover {
+.celda-elemento:hover {
   transform: scale(1.18);
   z-index: 10;
   box-shadow: 0 4px 16px rgba(0,0,0,0.6);
   border-color: rgba(255,255,255,0.6);
 }
-.element-cell.dimmed { opacity: 0.15; filter: grayscale(0.8); }
+.celda-elemento.atenuado { opacity: 0.15; filter: grayscale(0.8); }
 
-.cell-num { font-size:0.55rem; color:rgba(255,255,255,0.75); align-self:flex-start; padding-left:2px; font-family:var(--font-mono); }
-.cell-sym { font-size:1.05rem; font-weight:800; color:#fff; font-family:var(--font-mono); line-height:1; }
-.cell-name { font-size:0.46rem; color:rgba(255,255,255,0.8); text-align:center; line-height:1.1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+.num-celda { font-size:0.55rem; color:rgba(255,255,255,0.75); align-self:flex-start; padding-left:2px; font-family:var(--font-mono); }
+.sim-celda { font-size:1.05rem; font-weight:800; color:#fff; font-family:var(--font-mono); line-height:1; }
+.nombre-celda { font-size:0.46rem; color:rgba(255,255,255,0.8); text-align:center; line-height:1.1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
 
-.cell-series-marker {
+.marcador-serie-celda {
   grid-column: span 1;
   border-radius: var(--radius-sm);
   border: 1px dashed var(--clr-border);
@@ -62,7 +62,7 @@
   padding: 2px;
   user-select: none;
 }
-.cell-series-spacer {
+.espaciador-serie-celda {
   grid-column: 1 / -1;
   height: 12px;
 }
@@ -73,15 +73,15 @@
 .fam-metal-otro           { background:linear-gradient(135deg, #4895ef, #2365bf); }
 .fam-semimetal            { background:linear-gradient(135deg, #06d6a0, #048c68); }
 .fam-no-metal             { background:linear-gradient(135deg, #f72585, #a30e52); }
-.fam-halogens             { background:linear-gradient(135deg, #4cc9f0, #178eb5); }
+.fam-halogenos             { background:linear-gradient(135deg, #4cc9f0, #178eb5); }
 .fam-gas-noble            { background:linear-gradient(135deg, #ffd166, #b88f1c); }
-.fam-lanthanide           { background:linear-gradient(135deg, #70d6ff, #248ab5); }
-.fam-actinide             { background:linear-gradient(135deg, #c77dff, #7a31b5); }
+.fam-lantanido           { background:linear-gradient(135deg, #70d6ff, #248ab5); }
+.fam-actinido             { background:linear-gradient(135deg, #c77dff, #7a31b5); }
 .fam-placeholder          { background:transparent; cursor:default; pointer-events:none; }
 
-.modal-element-header { display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--clr-border); }
-.modal-element-symbol { font-size:3rem; font-weight:800; font-family:var(--font-mono); color:var(--clr-primary); min-width:75px; text-align:center; background:var(--clr-surface2); border-radius:var(--radius-md); padding:0.6rem; border:1px solid var(--clr-border); }
-.modal-element-body { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.modal-element-body .detail-item { display:flex; flex-direction:column; gap:0.2rem; }
-.modal-element-body .detail-item small { font-size:0.75rem; color:var(--clr-text-muted); }
-.modal-element-body .detail-item strong { font-size:1rem; color:var(--clr-text); }
+.encabezado-elemento-modal { display:flex; align-items:center; gap:1.5rem; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid var(--clr-border); }
+.simbolo-elemento-modal { font-size:3rem; font-weight:800; font-family:var(--font-mono); color:var(--clr-primary); min-width:75px; text-align:center; background:var(--clr-surface2); border-radius:var(--radius-md); padding:0.6rem; border:1px solid var(--clr-border); }
+.cuerpo-elemento-modal { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.cuerpo-elemento-modal .item-detalle { display:flex; flex-direction:column; gap:0.2rem; }
+.cuerpo-elemento-modal .item-detalle small { font-size:0.75rem; color:var(--clr-text-muted); }
+.cuerpo-elemento-modal .item-detalle strong { font-size:1rem; color:var(--clr-text); }

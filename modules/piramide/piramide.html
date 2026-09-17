@@ -1,27 +1,27 @@
-<div class="module-header">
+<div class="encabezado-modulo">
   <h2><i class="fa-solid fa-layer-group"></i> Pirámide Alimenticia</h2>
-  <p class="module-desc">Arrastra los alimentos al nivel correcto de la pirámide (base: consumo diario, punta: ocasional).</p>
+  <p class="descripcion-modulo">Arrastra los alimentos al nivel correcto de la pirámide (base: consumo diario, punta: ocasional).</p>
 </div>
 
-<div class="pyramid-container">
+<div class="contenedor-piramide">
   
-  <div class="pyramid-items-panel">
+  <div class="panel-alimentos-piramide">
     <h3><i class="fa-solid fa-basket-shopping"></i> Alimentos</h3>
-    <div class="items-drag-zone" id="pyrDragZone">
+    <div class="zona-arrastre-alimentos" id="zonaArrastrePiramide">
       <!-- Generado por JS -->
     </div>
   </div>
 
-  <div class="pyramid-levels-panel">
-    <div class="pyramid-svg">
-      <div class="pyr-level pyr-l1" data-level="1"><span class="level-lbl">Dulces / Grasas (Ocasional)</span><div class="drop-zone"></div></div>
-      <div class="pyr-level pyr-l2" data-level="2"><span class="level-lbl">Lácteos / Proteínas</span><div class="drop-zone"></div></div>
-      <div class="pyr-level pyr-l3" data-level="3"><span class="level-lbl">Frutas / Verduras</span><div class="drop-zone"></div></div>
-      <div class="pyr-level pyr-l4" data-level="4"><span class="level-lbl">Carbohidratos (Base)</span><div class="drop-zone"></div></div>
+  <div class="panel-niveles-piramide">
+    <div class="svg-piramide">
+      <div class="nivel-piramide piramide-n1" data-level="1"><span class="etiqueta-nivel">Dulces / Grasas (Ocasional)</span><div class="zona-soltar"></div></div>
+      <div class="nivel-piramide piramide-n2" data-level="2"><span class="etiqueta-nivel">Lácteos / Proteínas</span><div class="zona-soltar"></div></div>
+      <div class="nivel-piramide piramide-n3" data-level="3"><span class="etiqueta-nivel">Frutas / Verduras</span><div class="zona-soltar"></div></div>
+      <div class="nivel-piramide piramide-n4" data-level="4"><span class="etiqueta-nivel">Carbohidratos (Base)</span><div class="zona-soltar"></div></div>
     </div>
     <div style="text-align:center; margin-top:1.5rem;">
-      <button class="btn-primary" id="pyrCheckBtn"><i class="fa-solid fa-check-double"></i> Validar Pirámide</button>
-      <div id="pyrFeedback" style="margin-top:1rem; font-weight:700; font-size:1.1rem;"></div>
+      <button class="btn-primario" id="btnRevisarPiramide"><i class="fa-solid fa-check-double"></i> Validar Pirámide</button>
+      <div id="retroalimentacionPiramide" style="margin-top:1rem; font-weight:700; font-size:1.1rem;"></div>
     </div>
   </div>
 

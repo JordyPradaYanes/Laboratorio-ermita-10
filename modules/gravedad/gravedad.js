@@ -12,7 +12,7 @@
  *    • Canal de caída: en el HTML hay un <div id="canalCaida"> que actúa
  *      como el tubo donde cae la bola, y un <div id="objeto"> que es la bola.
  *    • animarCaida(gravedad): recibe un número de gravedad (ej: 9.8) y
- *      hace que la bola baje moviéndola con "objeto.style.top".
+ *      hace que la bola baje moviéndola con "bola.style.top".
  *      Usa setInterval (cada 16ms = ~60 fps) y física simple:
  *        velocidad += gravedad * dt   → la gravedad acelera la bola
  *        posicion  += velocidad * dt  → la velocidad mueve la bola
@@ -38,15 +38,15 @@
   // ══════════════════════════════════════════════════════════════════
 
   // Referencias a los elementos del HTML
-  const objeto    = document.getElementById('objeto');       // La bola
-  const canal     = document.getElementById('canalCaida');   // El tubo de caída
-  const gravStats = document.getElementById('gravStats');    // Panel de resultados
-  const gravTime  = document.getElementById('gravTime');     // Etiqueta de tiempo
-  const gravPlan  = document.getElementById('gravPlaneta');  // Etiqueta de planeta
+  const bola            = document.getElementById('objeto');               // La bola
+  const tubo            = document.getElementById('canalCaida');           // El tubo de caída
+  const estadisticas    = document.getElementById('estadisticasGravedad'); // Panel de resultados
+  const etiquetaTiempo  = document.getElementById('tiempoGravedad');       // Etiqueta de tiempo
+  const etiquetaPlaneta = document.getElementById('planetaGravedad');      // Etiqueta de planeta
 
   // Estado interno del motor
-  let intervalo    = null;   // Referencia al setInterval activo
-  let cayendo      = false;  // ¿Está cayendo la bola ahora mismo?
+  let temporizador = null;   // Referencia al setInterval activo
+  let enCaida      = false;  // ¿Está cayendo la bola ahora mismo?
 
   // Altura máxima del canal en píxeles (el objeto va de 0 hasta aquí)
   const ALTURA_CANAL = 356; // canal de 400px - objeto de 44px
@@ -58,34 +58,34 @@
    * Internamente guarda el tiempo de inicio para calcular la duración.
    */
   function animarCaida(gravedad, nombrePlaneta) {
-    if (cayendo) return; // Evita doble clic
-    cayendo = true;
+    if (enCaida) return; // Evita doble clic
+    enCaida = true;
 
     let posicion  = 0;   // Posición actual en píxeles (0 = arriba)
     let velocidad = 0;   // Velocidad en px/s
     const dt      = 0.016; // 16ms por fotograma (~60fps)
     const escala  = 25;  // 1 m/s² = 25 px/s² (para que se vea bien en pantalla)
 
-    const inicio = Date.now(); // Guardamos el momento exacto en que empieza
+    const tiempoInicio = Date.now(); // Guardamos el momento exacto en que empieza
 
-    intervalo = setInterval(function () {
+    temporizador = setInterval(function () {
       // Física: la gravedad aumenta la velocidad
       velocidad += gravedad * escala * dt;
       // La velocidad mueve la bola hacia abajo
       posicion  += velocidad * dt;
 
       // Mover la bola en el HTML
-      objeto.style.top = posicion + 'px';
+      bola.style.top = posicion + 'px';
 
       // Si llegó al fondo, detener
       if (posicion >= ALTURA_CANAL) {
-        objeto.style.top = ALTURA_CANAL + 'px';
-        clearInterval(intervalo);
-        intervalo = null;
-        cayendo   = false;
+        bola.style.top = ALTURA_CANAL + 'px';
+        clearInterval(temporizador);
+        temporizador = null;
+        enCaida      = false;
 
         // Calcular tiempo transcurrido en milisegundos
-        const tiempoMs = Date.now() - inicio;
+        const tiempoMs = Date.now() - tiempoInicio;
         mostrarResultado(nombrePlaneta, tiempoMs);
       }
     }, 16);
@@ -97,9 +97,9 @@
    */
   function mostrarResultado(planeta, tiempoMs) {
     const segundos = (tiempoMs / 1000).toFixed(2);
-    if (gravPlan)  gravPlan.textContent  = planeta;
-    if (gravTime)  gravTime.textContent  = segundos;
-    if (gravStats) gravStats.hidden = false;
+    if (etiquetaPlaneta) etiquetaPlaneta.textContent = planeta;
+    if (etiquetaTiempo)  etiquetaTiempo.textContent  = segundos;
+    if (estadisticas)    estadisticas.hidden = false;
   }
 
   /**
@@ -107,24 +107,24 @@
    * Devuelve la bola a su posición inicial y oculta los resultados.
    */
   function reiniciar() {
-    if (intervalo) {
-      clearInterval(intervalo);
-      intervalo = null;
+    if (temporizador) {
+      clearInterval(temporizador);
+      temporizador = null;
     }
-    cayendo          = false;
-    objeto.style.top = '0px';
-    if (gravStats) gravStats.hidden = true;
-    if (gravTime)  gravTime.textContent  = '0.00';
-    if (gravPlan)  gravPlan.textContent  = '—';
+    enCaida          = false;
+    bola.style.top = '0px';
+    if (estadisticas)    estadisticas.hidden = true;
+    if (etiquetaTiempo)  etiquetaTiempo.textContent  = '0.00';
+    if (etiquetaPlaneta) etiquetaPlaneta.textContent = '—';
   }
 
   // ══════════════════════════════════════════════════════════════════
   //  TU CÓDIGO AQUÍ — Completa las secciones marcadas con TODO
   // ══════════════════════════════════════════════════════════════════
 
-  function init() {
+  function arrancar() {
     // Verificamos que los elementos del HTML existan
-    if (!objeto || !canal) return;
+    if (!bola || !tubo) return;
 
     reiniciar(); // Ponemos la bola arriba al cargar el módulo
 
@@ -149,9 +149,9 @@
     //   b) Guarda el valor de gravedad de la Tierra en gravedadActual
     //      (usa el objeto "gravedades" que creaste en el TODO 1)
     //   c) Cambia los estilos de los botones:
-    //      - Quítale la clase 'active-mode' a TODOS los botones .env-btns button
+    //      - Quítale la clase 'modo-activo' a TODOS los botones .botones-entorno button
     //        (usa querySelectorAll y forEach)
-    //      - Agrégale la clase 'active-mode' al botón que se clickeó
+    //      - Agrégale la clase 'modo-activo' al botón que se clickeó
     //   d) Llama a reiniciar() para resetear la bola
     // ──────────────────────────────────────────────────────────────
 
@@ -171,26 +171,26 @@
 
 
     // ──────────────────────────────────────────────────────────────
-    // TODO 5: Event listener del botón "Soltar objeto" (id: "gravDropBtn")
+    // TODO 5: Event listener del botón "Soltar objeto" (id: "botonSoltarGravedad")
     // Cuando se haga clic:
     //   a) Llama a animarCaida(gravedadActual, planetaActual)
     //      (las variables ya las tienes guardadas de los TODOs anteriores)
-    // Pista: document.getElementById('gravDropBtn').addEventListener('click', ...)
+    // Pista: document.getElementById('botonSoltarGravedad').addEventListener('click', ...)
     // ──────────────────────────────────────────────────────────────
 
 
     // ──────────────────────────────────────────────────────────────
-    // TODO 6: Event listener del botón "Reiniciar" (id: "gravResetBtn")
+    // TODO 6: Event listener del botón "Reiniciar" (id: "botonReiniciarGravedad")
     // Cuando se haga clic, llama a la función reiniciar().
     // ──────────────────────────────────────────────────────────────
 
   }
 
   // Función para detener todo al cambiar de módulo
-  function stop() {
-    if (intervalo) { clearInterval(intervalo); intervalo = null; }
+  function detener() {
+    if (temporizador) { clearInterval(temporizador); temporizador = null; }
   }
 
   // Registramos el módulo en la aplicación
-  window.MODULES.gravedad = { init, stop };
+  window.MODULES.gravedad = { init: arrancar, stop: detener };
 })();

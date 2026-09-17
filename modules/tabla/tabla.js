@@ -10,7 +10,7 @@
   // Aquí están todos los 118 elementos del universo.
   // Cada elemento tiene: Número, Símbolo, Nombre, Familia (color), Columna, Fila, Peso, Estado y una Historia.
   // ¡Busca tu elemento favorito (como el Oro o el Oxígeno) y cámbiale su historia!
-  const ELEMENTS = [
+  const ELEMENTOS = [
     // Periodo 1
     [
       1,
@@ -106,7 +106,7 @@
       9,
       "F",
       "Flúor",
-      "halogens",
+      "halogenos",
       17,
       2,
       "18.998",
@@ -196,7 +196,7 @@
       17,
       "Cl",
       "Cloro",
-      "halogens",
+      "halogenos",
       17,
       3,
       "35.453",
@@ -396,7 +396,7 @@
       35,
       "Br",
       "Bromo",
-      "halogens",
+      "halogenos",
       17,
       4,
       "79.904",
@@ -596,7 +596,7 @@
       53,
       "I",
       "Yodo",
-      "halogens",
+      "halogenos",
       17,
       5,
       "126.90",
@@ -786,7 +786,7 @@
       85,
       "At",
       "Ástato",
-      "halogens",
+      "halogenos",
       17,
       6,
       "(210)",
@@ -976,7 +976,7 @@
       117,
       "Ts",
       "Tenesino",
-      "halogens",
+      "halogenos",
       17,
       7,
       "(294)",
@@ -1000,7 +1000,7 @@
       57,
       "La",
       "Lantano",
-      "lanthanide",
+      "lantanido",
       4,
       8,
       "138.91",
@@ -1011,7 +1011,7 @@
       58,
       "Ce",
       "Cerio",
-      "lanthanide",
+      "lantanido",
       5,
       8,
       "140.12",
@@ -1022,7 +1022,7 @@
       59,
       "Pr",
       "Praseodimio",
-      "lanthanide",
+      "lantanido",
       6,
       8,
       "140.91",
@@ -1033,7 +1033,7 @@
       60,
       "Nd",
       "Neodimio",
-      "lanthanide",
+      "lantanido",
       7,
       8,
       "144.24",
@@ -1044,7 +1044,7 @@
       61,
       "Pm",
       "Prometio",
-      "lanthanide",
+      "lantanido",
       8,
       8,
       "(145)",
@@ -1055,7 +1055,7 @@
       62,
       "Sm",
       "Samario",
-      "lanthanide",
+      "lantanido",
       9,
       8,
       "150.36",
@@ -1066,7 +1066,7 @@
       63,
       "Eu",
       "Europio",
-      "lanthanide",
+      "lantanido",
       10,
       8,
       "151.96",
@@ -1077,7 +1077,7 @@
       64,
       "Gd",
       "Gadolinio",
-      "lanthanide",
+      "lantanido",
       11,
       8,
       "157.25",
@@ -1088,7 +1088,7 @@
       65,
       "Tb",
       "Terbio",
-      "lanthanide",
+      "lantanido",
       12,
       8,
       "158.93",
@@ -1099,7 +1099,7 @@
       66,
       "Dy",
       "Disprosio",
-      "lanthanide",
+      "lantanido",
       13,
       8,
       "162.50",
@@ -1110,7 +1110,7 @@
       67,
       "Ho",
       "Holmio",
-      "lanthanide",
+      "lantanido",
       14,
       8,
       "164.93",
@@ -1121,7 +1121,7 @@
       68,
       "Er",
       "Erbio",
-      "lanthanide",
+      "lantanido",
       15,
       8,
       "167.26",
@@ -1132,7 +1132,7 @@
       69,
       "Tm",
       "Tulio",
-      "lanthanide",
+      "lantanido",
       16,
       8,
       "168.93",
@@ -1143,7 +1143,7 @@
       70,
       "Yb",
       "Iterbio",
-      "lanthanide",
+      "lantanido",
       17,
       8,
       "173.05",
@@ -1154,7 +1154,7 @@
       71,
       "Lu",
       "Lutecio",
-      "lanthanide",
+      "lantanido",
       18,
       8,
       "174.97",
@@ -1167,7 +1167,7 @@
       89,
       "Ac",
       "Actinio",
-      "actinide",
+      "actinido",
       4,
       9,
       "(227)",
@@ -1178,7 +1178,7 @@
       90,
       "Th",
       "Torio",
-      "actinide",
+      "actinido",
       5,
       9,
       "232.04",
@@ -1189,7 +1189,7 @@
       91,
       "Pa",
       "Protactinio",
-      "actinide",
+      "actinido",
       6,
       9,
       "231.04",
@@ -1200,7 +1200,7 @@
       92,
       "U",
       "Uranio",
-      "actinide",
+      "actinido",
       7,
       9,
       "238.03",
@@ -1211,7 +1211,7 @@
       93,
       "Np",
       "Neptunio",
-      "actinide",
+      "actinido",
       8,
       9,
       "(237)",
@@ -1222,7 +1222,7 @@
       94,
       "Pu",
       "Plutonio",
-      "actinide",
+      "actinido",
       9,
       9,
       "(244)",
@@ -1233,7 +1233,7 @@
       95,
       "Am",
       "Americio",
-      "actinide",
+      "actinido",
       10,
       9,
       "(243)",
@@ -1244,7 +1244,7 @@
       96,
       "Cm",
       "Curio",
-      "actinide",
+      "actinido",
       11,
       9,
       "(247)",
@@ -1255,7 +1255,7 @@
       97,
       "Bk",
       "Berkelio",
-      "actinide",
+      "actinido",
       12,
       9,
       "(247)",
@@ -1266,7 +1266,7 @@
       98,
       "Cf",
       "Californio",
-      "actinide",
+      "actinido",
       13,
       9,
       "(251)",
@@ -1277,7 +1277,7 @@
       99,
       "Es",
       "Einstenio",
-      "actinide",
+      "actinido",
       14,
       9,
       "(252)",
@@ -1288,7 +1288,7 @@
       100,
       "Fm",
       "Fermio",
-      "actinide",
+      "actinido",
       15,
       9,
       "(257)",
@@ -1299,7 +1299,7 @@
       101,
       "Md",
       "Mendelevio",
-      "actinide",
+      "actinido",
       16,
       9,
       "(258)",
@@ -1310,7 +1310,7 @@
       102,
       "No",
       "Nobelio",
-      "actinide",
+      "actinido",
       17,
       9,
       "(259)",
@@ -1321,7 +1321,7 @@
       103,
       "Lr",
       "Laurencio",
-      "actinide",
+      "actinido",
       18,
       9,
       "(266)",
@@ -1331,147 +1331,147 @@
   ];
 
   // 🎯 Variables para recordar qué estamos haciendo
-  let currentFamily = "all"; // ¿Qué familia estamos viendo? Al principio "all" (todas)
-  let $table, $modal; // Nuestras conexiones con la pantalla
-  let _onKeydown = null; // Referencia al listener de teclado (para limpiarlo en stop())
+  let familiaActiva = "todos"; // ¿Qué familia estamos viendo? Al principio "todos" (todas)
+  let $tabla, $modal; // Nuestras conexiones con la pantalla
+  let _alPresionarTecla = null; // Referencia al listener de teclado (para limpiarlo en detener())
 
   // 🎨 Esta es la función que dibuja toda la tabla en tu pantalla
-  function render() {
-    $table.innerHTML = ""; // Limpiamos la mesa antes de dibujar
+  function dibujar() {
+    $tabla.innerHTML = ""; // Limpiamos la mesa antes de dibujar
 
     // Renderizar períodos 1 al 7
-    for (let row = 1; row <= 7; row++) {
+    for (let fila = 1; fila <= 7; fila++) {
       for (let col = 1; col <= 18; col++) {
         // Marcador visual de serie de lantánidos en (col 3, fila 6)
-        if (col === 3 && row === 6) {
-          const marker = document.createElement("div");
-          marker.className = "cell-series-marker";
-          marker.innerHTML = "<span>57-71</span><small>La-Lu</small>";
-          marker.title = "Lantánidos (ver serie abajo)";
-          marker.style.cursor = "pointer";
-          marker.addEventListener("click", () => {
-            selectFamily("lanthanide");
+        if (col === 3 && fila === 6) {
+          const marcador = document.createElement("div");
+          marcador.className = "marcador-serie-celda";
+          marcador.innerHTML = "<span>57-71</span><small>La-Lu</small>";
+          marcador.title = "Lantánidos (ver serie abajo)";
+          marcador.style.cursor = "pointer";
+          marcador.addEventListener("click", () => {
+            seleccionarFamilia("lantanido");
           });
-          $table.appendChild(marker);
+          $tabla.appendChild(marcador);
           continue;
         }
 
         // Marcador visual de serie de actínidos en (col 3, fila 7)
-        if (col === 3 && row === 7) {
-          const marker = document.createElement("div");
-          marker.className = "cell-series-marker";
-          marker.innerHTML = "<span>89-103</span><small>Ac-Lr</small>";
-          marker.title = "Actínidos (ver serie abajo)";
-          marker.style.cursor = "pointer";
-          marker.addEventListener("click", () => {
-            selectFamily("actinide");
+        if (col === 3 && fila === 7) {
+          const marcador = document.createElement("div");
+          marcador.className = "marcador-serie-celda";
+          marcador.innerHTML = "<span>89-103</span><small>Ac-Lr</small>";
+          marcador.title = "Actínidos (ver serie abajo)";
+          marcador.style.cursor = "pointer";
+          marcador.addEventListener("click", () => {
+            seleccionarFamilia("actinido");
           });
-          $table.appendChild(marker);
+          $tabla.appendChild(marcador);
           continue;
         }
 
-        const el = ELEMENTS.find((e) => e[4] === col && e[5] === row);
-        const cell = document.createElement("div");
+        const el = ELEMENTOS.find((e) => e[4] === col && e[5] === fila);
+        const celda = document.createElement("div");
 
         if (el) {
-          createCell(cell, el);
+          crearCelda(celda, el);
         } else {
-          cell.className = "element-cell fam-placeholder";
+          celda.className = "celda-elemento fam-placeholder";
         }
 
-        $table.appendChild(cell);
+        $tabla.appendChild(celda);
       }
     }
 
     // Separador visual entre la tabla principal y las series F
-    const spacer = document.createElement("div");
-    spacer.className = "cell-series-spacer";
-    $table.appendChild(spacer);
+    const espaciador = document.createElement("div");
+    espaciador.className = "espaciador-serie-celda";
+    $tabla.appendChild(espaciador);
 
     // Renderizar filas 8 (Lantánidos) y 9 (Actínidos)
-    for (let row = 8; row <= 9; row++) {
+    for (let fila = 8; fila <= 9; fila++) {
       for (let col = 1; col <= 18; col++) {
-        const cell = document.createElement("div");
+        const celda = document.createElement("div");
         if (col < 4) {
           // Espacio a la izquierda
           if (col === 2) {
-            cell.className = "cell-series-marker";
-            cell.textContent = row === 8 ? "Lantánidos" : "Actínidos";
-            cell.style.gridColumn = "span 2";
+            celda.className = "marcador-serie-celda";
+            celda.textContent = fila === 8 ? "Lantánidos" : "Actínidos";
+            celda.style.gridColumn = "span 2";
             col++; // Salta la columna 3
           } else {
-            cell.className = "element-cell fam-placeholder";
+            celda.className = "celda-elemento fam-placeholder";
           }
         } else {
-          const el = ELEMENTS.find((e) => e[4] === col && e[5] === row);
+          const el = ELEMENTOS.find((e) => e[4] === col && e[5] === fila);
           if (el) {
-            createCell(cell, el);
+            crearCelda(celda, el);
           } else {
-            cell.className = "element-cell fam-placeholder";
+            celda.className = "celda-elemento fam-placeholder";
           }
         }
-        $table.appendChild(cell);
+        $tabla.appendChild(celda);
       }
     }
   }
 
   // 🛠️ Función para fabricar un cuadrito (celda) de un elemento
-  function createCell(cell, el) {
-    const [num, sym, name, family] = el;
-    const show = currentFamily === "all" || currentFamily === family;
-    cell.className = `element-cell fam-${family} ${show ? "" : "dimmed"}`;
-    cell.tabIndex = 0;
-    cell.setAttribute("role", "button");
-    cell.setAttribute("aria-label", `${name}, número ${num}`);
-    cell.innerHTML = `
-      <span class="cell-num">${num}</span>
-      <span class="cell-sym">${sym}</span>
-      <span class="cell-name">${name}</span>
+  function crearCelda(celda, el) {
+    const [num, sim, nombre, familia] = el;
+    const mostrar = familiaActiva === "todos" || familiaActiva === familia;
+    celda.className = `celda-elemento fam-${familia} ${mostrar ? "" : "atenuado"}`;
+    celda.tabIndex = 0;
+    celda.setAttribute("role", "button");
+    celda.setAttribute("aria-label", `${nombre}, número ${num}`);
+    celda.innerHTML = `
+      <span class="num-celda">${num}</span>
+      <span class="sim-celda">${sim}</span>
+      <span class="nombre-celda">${nombre}</span>
     `;
-    cell.addEventListener("click", () => openModal(el));
-    cell.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") openModal(el);
+    celda.addEventListener("click", () => abrirModal(el));
+    celda.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") abrirModal(el);
     });
   }
 
   // 🔍 Función para cuando haces clic en un filtro (ej: "Solo Metales")
-  function selectFamily(family) {
-    const filters = document.getElementById("periodicFilters");
-    if (!filters) return;
-    filters.querySelectorAll(".filter-btn").forEach((b) => {
-      b.classList.toggle("active", b.dataset.family === family);
+  function seleccionarFamilia(familia) {
+    const filtros = document.getElementById("filtrosTabla");
+    if (!filtros) return;
+    filtros.querySelectorAll(".btn-filtro").forEach((b) => {
+      b.classList.toggle("activo", b.dataset.family === familia);
     });
-    currentFamily = family;
-    render();
+    familiaActiva = familia;
+    dibujar();
   }
 
   // 📖 ¡Abre el libro de secretos! Muestra la ventanita con la historia del elemento
-  function openModal([num, sym, name, family, col, row, mass, state, desc]) {
-    const familyLabels = {
+  function abrirModal([num, sim, nombre, familia, col, fila, masa, estado, desc]) {
+    const etiquetasFamilia = {
       "metal-alcalino": "Metal alcalino (Grupo 1)",
       "metal-alcalinoterreo": "Metal alcalinotérreo (Grupo 2)",
       "metal-transicion": "Metal de transición (Bloque d)",
       "metal-otro": "Otro metal / Post-transición (Bloque p)",
       semimetal: "Semimetal / Metaloide",
       "no-metal": "No metal reactivo",
-      halogens: "Halógeno (Grupo 17)",
+      halogenos: "Halógeno (Grupo 17)",
       "gas-noble": "Gas noble inerte (Grupo 18)",
-      lanthanide: "Lantánido (Tierras raras, Bloque f)",
-      actinide: "Actínido (Radiactivo, Bloque f)",
+      lantanido: "Lantánido (Tierras raras, Bloque f)",
+      actinido: "Actínido (Radiactivo, Bloque f)",
     };
 
-    document.getElementById("modalSymbol").textContent = sym;
-    document.getElementById("modalElementTitle").textContent =
-      `${name} (${sym})`;
-    document.getElementById("modalElementSub").textContent =
-      `Número atómico: ${num} · ${familyLabels[family] || family}`;
+    document.getElementById("simboloModal").textContent = sim;
+    document.getElementById("tituloElementoModal").textContent =
+      `${nombre} (${sim})`;
+    document.getElementById("subElementoModal").textContent =
+      `Número atómico: ${num} · ${etiquetasFamilia[familia] || familia}`;
 
-    document.getElementById("modalElementBody").innerHTML = `
-      <div class="detail-item"><small>Masa atómica</small><strong>${mass} u</strong></div>
-      <div class="detail-item"><small>Estado estándar</small><strong>${state}</strong></div>
-      <div class="detail-item"><small>Grupo / Período</small><strong>Grupo ${col <= 18 ? col : "—"} · Período ${row <= 7 ? row : row === 8 ? "6 (Lantánidos)" : "7 (Actínidos)"}</strong></div>
-      <div class="detail-item"><small>Clasificación</small><strong>${family.replace(/-/g, " ")}</strong></div>
-      <div class="detail-item" style="grid-column:1/-1">
+    document.getElementById("cuerpoElementoModal").innerHTML = `
+      <div class="item-detalle"><small>Masa atómica</small><strong>${masa} u</strong></div>
+      <div class="item-detalle"><small>Estado estándar</small><strong>${estado}</strong></div>
+      <div class="item-detalle"><small>Grupo / Período</small><strong>Grupo ${col <= 18 ? col : "—"} · Período ${fila <= 7 ? fila : fila === 8 ? "6 (Lantánidos)" : "7 (Actínidos)"}</strong></div>
+      <div class="item-detalle"><small>Clasificación</small><strong>${familia.replace(/-/g, " ")}</strong></div>
+      <div class="item-detalle" style="grid-column:1/-1">
         <small>Propiedades y Relevancia Científica</small>
         <strong style="font-weight:400; color:var(--clr-text); line-height:1.5; margin-top:0.3rem;">${desc}</strong>
       </div>
@@ -1481,45 +1481,45 @@
   }
 
   // 🚀 Enciende el laboratorio de elementos
-  function init() {
-    $table = document.getElementById("periodicTable");
-    $modal = document.getElementById("elementModal");
-    render();
+  function arrancar() {
+    $tabla = document.getElementById("tablaPeriodica");
+    $modal = document.getElementById("modalElemento");
+    dibujar();
 
-    const filters = document.getElementById("periodicFilters");
-    if (filters) {
-      filters.querySelectorAll(".filter-btn").forEach((btn) => {
+    const filtros = document.getElementById("filtrosTabla");
+    if (filtros) {
+      filtros.querySelectorAll(".btn-filtro").forEach((btn) => {
         btn.addEventListener("click", () => {
-          filters
-            .querySelectorAll(".filter-btn")
-            .forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          currentFamily = btn.dataset.family;
-          render();
+          filtros
+            .querySelectorAll(".btn-filtro")
+            .forEach((b) => b.classList.remove("activo"));
+          btn.classList.add("activo");
+          familiaActiva = btn.dataset.family;
+          dibujar();
         });
       });
     }
 
     document
-      .getElementById("closeElementModal")
+      .getElementById("cerrarModalElemento")
       ?.addEventListener("click", () => ($modal.hidden = true));
     $modal.addEventListener("click", (e) => {
       if (e.target === $modal) $modal.hidden = true;
     });
-    // Guardamos la referencia para poder limpiarla en stop() y evitar fugas de memoria
-    _onKeydown = (e) => {
+    // Guardamos la referencia para poder limpiarla en detener() y evitar fugas de memoria
+    _alPresionarTecla = (e) => {
       if (e.key === 'Escape' && !$modal.hidden) $modal.hidden = true;
     };
-    document.addEventListener('keydown', _onKeydown);
+    document.addEventListener('keydown', _alPresionarTecla);
   }
 
   // Limpia el listener de teclado cuando el router cambia de módulo
-  function stop() {
-    if (_onKeydown) {
-      document.removeEventListener('keydown', _onKeydown);
-      _onKeydown = null;
+  function detener() {
+    if (_alPresionarTecla) {
+      document.removeEventListener('keydown', _alPresionarTecla);
+      _alPresionarTecla = null;
     }
   }
 
-  window.MODULES.tabla = { init, stop };
+  window.MODULES.tabla = { init: arrancar, stop: detener };
 })();

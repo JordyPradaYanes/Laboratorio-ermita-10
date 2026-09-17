@@ -1,18 +1,18 @@
 /* ── Módulo Pirámide ──────────────────────────────────────────── */
-.pyramid-container {
+.contenedor-piramide {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
 }
 
-.pyramid-items-panel,
-.pyramid-levels-panel {
+.panel-alimentos-piramide,
+.panel-niveles-piramide {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-xl);
   padding: 2rem;
 }
-.pyramid-items-panel h3 {
+.panel-alimentos-piramide h3 {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -21,7 +21,7 @@
   gap: 0.5rem;
 }
 
-.items-drag-zone {
+.zona-arrastre-alimentos {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -32,7 +32,7 @@
   border-radius: var(--radius-md);
 }
 
-.food-item {
+.elemento-comida {
   background: var(--clr-surface3);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-sm);
@@ -45,18 +45,18 @@
   gap: 0.4rem;
   transition: transform var(--transition-fast);
 }
-.food-item:active {
+.elemento-comida:active {
   cursor: grabbing;
   transform: scale(0.95);
 }
-.food-item.dragging {
+.elemento-comida.arrastrando {
   opacity: 0.5;
 }
-.food-item i {
+.elemento-comida i {
   color: var(--clr-primary);
 }
 
-.pyramid-svg {
+.svg-piramide {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +65,7 @@
   width: 100%;
   max-width: 400px;
 }
-.pyr-level {
+.nivel-piramide {
   width: 100%;
   min-height: 80px;
   position: relative;
@@ -76,39 +76,39 @@
   align-items: center;
   transition: all var(--transition-fast);
 }
-.pyr-level.drag-over {
+.nivel-piramide.sobre-arrastre {
   border-color: var(--clr-accent);
   filter: brightness(1.2);
   transform: scale(1.02);
 }
 
-.pyr-l1 {
+.piramide-n1 {
   width: 52%;
   background: linear-gradient(135deg, #ef476f, #b82a4c);
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
   min-height: 120px;
   padding-top: 25px;
 }
-.pyr-l2 {
+.piramide-n2 {
   width: 70%;
   background: linear-gradient(135deg, #ffd166, #c29d44);
   clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
   min-height: 90px;
 }
-.pyr-l3 {
+.piramide-n3 {
   width: 85%;
   background: linear-gradient(135deg, #06d6a0, #049c74);
   clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%);
   min-height: 90px;
 }
-.pyr-l4 {
+.piramide-n4 {
   width: 100%;
   background: linear-gradient(135deg, #118ab2, #0d6482);
   clip-path: polygon(3% 0, 97% 0, 100% 100%, 0 100%);
   min-height: 95px;
 }
 
-.level-lbl {
+.etiqueta-nivel {
   font-size: 0.75rem;
   font-weight: 700;
   color: #fff;
@@ -124,14 +124,14 @@
   line-height: 1.2;
 }
 
-.pyr-l1 .level-lbl {
+.piramide-n1 .etiqueta-nivel {
   top: 48px;
   width: 75%;
   font-size: 0.68rem;
   line-height: 1.15;
 }
 
-.drop-zone {
+.zona-soltar {
   width: 100%;
   height: 100%;
   display: flex;
@@ -142,12 +142,12 @@
   padding: 1.6rem 0.8rem 0.6rem;
 }
 
-.pyr-l1 .drop-zone {
+.piramide-n1 .zona-soltar {
   padding-top: 3.8rem;
 }
 
 @media (max-width: 900px) {
-  .pyramid-container {
+  .contenedor-piramide {
     grid-template-columns: 1fr;
   }
 }

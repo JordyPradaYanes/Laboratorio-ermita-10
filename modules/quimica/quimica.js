@@ -88,11 +88,11 @@
   // Referencias a elementos del HTML (el motor las necesita)
   const zonaVisual  = document.getElementById('zonaCombinacion');
   const placeholder = document.getElementById('placeholderTexto');
-  const panelResult = document.getElementById('resultado');
-  const resultIcono = document.getElementById('resultadoIcono');
-  const resultNombre= document.getElementById('resultadoNombre');
-  const resultForm  = document.getElementById('resultadoFormula');
-  const resultDesc  = document.getElementById('resultadoDesc');
+  const panelResultado = document.getElementById('resultado');
+  const resultadoIcono = document.getElementById('resultadoIcono');
+  const resultadoNombre= document.getElementById('resultadoNombre');
+  const resultadoFormula  = document.getElementById('resultadoFormula');
+  const resultadoDesc  = document.getElementById('resultadoDesc');
 
   /**
    * actualizarZonaVisual()
@@ -107,7 +107,7 @@
     if (elementosSeleccionados.length === 0) {
       // Si el array está vacío, mostramos el texto de ayuda
       const span = document.createElement('span');
-      span.className = 'chem-placeholder';
+      span.className = 'placeholder-quimica';
       span.id = 'placeholderTexto';
       span.textContent = 'Agrega elementos haciendo clic arriba ↑';
       zonaVisual.appendChild(span);
@@ -115,13 +115,13 @@
       // Si hay elementos, creamos un token visual por cada uno
       elementosSeleccionados.forEach(function (elem, indice) {
         const token = document.createElement('div');
-        token.className = 'chem-token';
+        token.className = 'token-quimica';
         token.textContent = elem;
         // Al hacer clic en un token, se elimina del array
         token.addEventListener('click', function () {
           elementosSeleccionados.splice(indice, 1);
           actualizarZonaVisual();
-          panelResult.hidden = true; // Ocultamos resultado si cambian
+          panelResultado.hidden = true; // Ocultamos resultado si cambian
         });
         zonaVisual.appendChild(token);
       });
@@ -161,12 +161,12 @@
    * Muestra el resultado cuando la combinación es válida.
    */
   function mostrarExito(molecula) {
-    resultIcono.textContent  = '✅';
-    resultNombre.textContent = '¡Molécula válida! ' + molecula.nombre;
-    resultForm.textContent   = 'Fórmula: ' + molecula.formula;
-    resultDesc.textContent   = molecula.desc;
-    panelResult.className    = 'chem-resultado exito';
-    panelResult.hidden       = false;
+    resultadoIcono.textContent  = '✅';
+    resultadoNombre.textContent = '¡Molécula válida! ' + molecula.nombre;
+    resultadoFormula.textContent   = 'Fórmula: ' + molecula.formula;
+    resultadoDesc.textContent   = molecula.desc;
+    panelResultado.className    = 'resultado-quimica exito';
+    panelResultado.hidden       = false;
   }
 
   /**
@@ -174,12 +174,12 @@
    * Muestra el resultado cuando la combinación no es una molécula conocida.
    */
   function mostrarFracaso() {
-    resultIcono.textContent  = '❌';
-    resultNombre.textContent = 'Combinación inválida';
-    resultForm.textContent   = 'Esa combinación de elementos no forma una molécula de nuestra lista.';
-    resultDesc.textContent   = '¡Sigue intentando! Prueba con H+H+O o Na+Cl.';
-    panelResult.className    = 'chem-resultado fracaso';
-    panelResult.hidden       = false;
+    resultadoIcono.textContent  = '❌';
+    resultadoNombre.textContent = 'Combinación inválida';
+    resultadoFormula.textContent   = 'Esa combinación de elementos no forma una molécula de nuestra lista.';
+    resultadoDesc.textContent   = '¡Sigue intentando! Prueba con H+H+O o Na+Cl.';
+    panelResultado.className    = 'resultado-quimica fracaso';
+    panelResultado.hidden       = false;
   }
 
   /**
@@ -189,7 +189,7 @@
   function limpiar() {
     elementosSeleccionados.length = 0; // Vaciamos el array sin reemplazarlo
     actualizarZonaVisual();
-    panelResult.hidden = true;
+    panelResultado.hidden = true;
   }
 
   // ══════════════════════════════════════════════════════════════════
@@ -198,7 +198,7 @@
 
   // ──────────────────────────────────────────────────────────────────
   // TODO 1: Declara el array donde guardarás los elementos elegidos.
-  // Un array vacío se escribe así: let miArray = [];
+  // Un array vacío se escribe así: let miArreglo = [];
   // Nómbralo exactamente: elementosSeleccionados
   // (Las funciones del motor ya usan ese nombre exacto)
   // ──────────────────────────────────────────────────────────────────
@@ -211,15 +211,15 @@
 
     // ──────────────────────────────────────────────────────────────
     // TODO 2: Event listeners de los botones de ELEMENTOS
-    // Hay 6 botones con la clase 'chem-elem-btn' (H, O, C, N, Na, Cl).
-    // Selecciónalos todos con: document.querySelectorAll('.chem-elem-btn')
+    // Hay 6 botones con la clase 'btn-elem-quimica' (H, O, C, N, Na, Cl).
+    // Selecciónalos todos con: document.querySelectorAll('.btn-elem-quimica')
     // Para CADA botón (usa .forEach):
     //   a) Agrega un addEventListener de tipo 'click'
     //   b) Dentro, lee el elemento del botón con: btn.dataset.elemento
     //      (eso te dará el string 'H', 'O', 'C', etc.)
     //   c) Agrégalo al array con: elementosSeleccionados.push(elemento)
     //   d) Llama a actualizarZonaVisual() para que se muestre en pantalla
-    //   e) Oculta el resultado anterior: panelResult.hidden = true
+    //   e) Oculta el resultado anterior: panelResultado.hidden = true
     // ──────────────────────────────────────────────────────────────
 
 

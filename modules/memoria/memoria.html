@@ -1,27 +1,27 @@
-<div class="module-header">
+<div class="encabezado-modulo">
   <h2><i class="fa-solid fa-clone"></i> Juego de Memoria en Inglés</h2>
-  <p class="module-desc">Encuentra los pares de palabras en inglés y su traducción al español.</p>
+  <p class="descripcion-modulo">Encuentra los pares de palabras en inglés y su traducción al español.</p>
 </div>
 
-<div class="memory-container">
-  <div class="memory-hud">
-    <div class="hud-card"><span class="hud-label">Intentos</span><span class="hud-val mono" id="memAttempts">0</span></div>
-    <div class="hud-card"><span class="hud-label">Pares</span><span class="hud-val mono" id="memPairs">0 / 8</span></div>
-    <div class="hud-card"><span class="hud-label">Tiempo</span><span class="hud-val mono" id="memTimer">0s</span></div>
+<div class="contenedor-memoria">
+  <div class="hud-memoria">
+    <div class="tarjeta-hud"><span class="etiqueta-hud">Intentos</span><span class="valor-hud mono" id="intentosMemoria">0</span></div>
+    <div class="tarjeta-hud"><span class="etiqueta-hud">Pares</span><span class="valor-hud mono" id="parejasMemoria">0 / 8</span></div>
+    <div class="tarjeta-hud"><span class="etiqueta-hud">Tiempo</span><span class="valor-hud mono" id="tiempoMemoria">0s</span></div>
   </div>
 
-  <div class="memory-board" id="memoryBoard" role="grid" aria-label="Tablero de memoria"></div>
+  <div class="tablero-memoria" id="tableroMemoria" role="grid" aria-label="Tablero de memoria"></div>
 
-  <div class="memory-controls">
-    <button class="btn-primary" id="memRestart"><i class="fa-solid fa-shuffle"></i> Nueva partida</button>
+  <div class="controles-memoria">
+    <button class="btn-primario" id="btnReiniciarMemoria"><i class="fa-solid fa-shuffle"></i> Nueva partida</button>
   </div>
 
-  <div class="memory-win" id="memWin" hidden>
-    <div class="win-card">
-      <i class="fa-solid fa-trophy big-icon"></i>
+  <div class="victoria-memoria" id="victoriaMemoria" hidden>
+    <div class="tarjeta-victoria">
+      <i class="fa-solid fa-trophy icono-grande"></i>
       <h3>¡Excelente!</h3>
-      <p>Completaste el juego en <strong id="memWinTime"></strong> con <strong id="memWinAttempts"></strong> intentos.</p>
-      <button class="btn-primary" id="memWinRestart"><i class="fa-solid fa-rotate-right"></i> Jugar de nuevo</button>
+      <p>Completaste el juego en <strong id="tiempoVictoriaMemoria"></strong> con <strong id="intentosVictoriaMemoria"></strong> intentos.</p>
+      <button class="btn-primario" id="btnReiniciarVictoriaMemoria"><i class="fa-solid fa-rotate-right"></i> Jugar de nuevo</button>
     </div>
   </div>
 </div>
